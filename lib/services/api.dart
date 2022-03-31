@@ -17,3 +17,8 @@ Future<Profile> getProfile() async {
   final response = await _loadAddressAsset('assets/profile.json');
   return Profile.fromJson(jsonDecode(response));
 }
+
+Future<Post> getMyPost() async {
+  final response = await _loadAddressAsset('assets/my_post.json');
+  return Post.fromJson(jsonDecode(response));
+}
