@@ -1,25 +1,13 @@
+import 'package:app/pages/post_page.dart';
+import 'package:app/pages/profile_page.dart';
 import 'package:app/providers/page.dart';
-import 'package:app/widgets/common.dart';
-import 'package:app/widgets/list_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   final List<Widget> _children = [
-    Column(
-      children: [
-        const SizedBox(height: 30),
-        flexibleText(
-          text: 'Posts',
-          fontWeight: FontWeight.bold,
-          fontSize: 43,
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.all(20),
-        ),
-        Expanded(child: ListCardWidget()),
-      ],
-    ),
-    const Text('Profile'),
+    PostPage(),
+    ProfilePage(),
   ];
 
   @override

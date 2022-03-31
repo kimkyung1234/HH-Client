@@ -3,6 +3,7 @@ import 'package:app/pages/login_page.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/providers/page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Pages>(create: (_) => Pages()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+        )),
         debugShowCheckedModeBanner: false,
         // home: LoginPage(),
         home: HomePage(),
