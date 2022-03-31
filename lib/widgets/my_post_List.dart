@@ -32,15 +32,18 @@ class MyPostListWidget extends StatelessWidget {
               mainAxisSpacing: 12,
               itemCount: snapshot.data!.posts!.length,
               itemBuilder: (context, index) {
-                return Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    child: carryImageWidget(
-                      url: snapshot.data!.posts![index].strImage ?? '',
-                      boxFit: BoxFit.fitHeight,
+                return GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      child: carryImageWidget(
+                        url: snapshot.data!.posts![index].strImage ?? '',
+                        boxFit: BoxFit.fitHeight,
+                      ),
                     ),
                   ),
                 );

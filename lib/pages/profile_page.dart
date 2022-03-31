@@ -1,13 +1,18 @@
 import 'package:app/models/profile.dart';
+import 'package:app/pages/add_post_page.dart';
+import 'package:app/providers/image.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:app/widgets/my_post_List.dart';
 import 'package:app/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<GalleryImage>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -15,6 +20,18 @@ class ProfilePage extends StatelessWidget {
         title: const Text(
           'Profile',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            provider.reset();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddPostPage(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.add_box_outlined, color: Colors.black),
         ),
         actions: [
           IconButton(

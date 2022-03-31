@@ -1,3 +1,4 @@
+import 'package:app/providers/image.dart';
 import 'package:app/pages/home_page.dart';
 import 'package:app/pages/login_page.dart';
 import 'package:app/providers/login.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<GalleryImage>(create: (_) => GalleryImage()),
         ChangeNotifierProvider<LoginHelper>(create: (_) => LoginHelper()),
         ChangeNotifierProvider<Pages>(create: (_) => Pages()),
       ],

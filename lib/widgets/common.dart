@@ -23,7 +23,7 @@ Widget carryImageWidget(
         margin: const EdgeInsets.fromLTRB(0, 50, 0, 50),
         child: Center(
           child: CircularProgressIndicator(
-            valueColor: const AlwaysStoppedAnimation<Color>(Colors.orange),
+            valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
             value: loadingProgress.expectedTotalBytes != null
                 ? loadingProgress.cumulativeBytesLoaded /
                     loadingProgress.expectedTotalBytes!

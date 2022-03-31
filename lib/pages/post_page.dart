@@ -24,7 +24,7 @@ class PostPage extends StatelessWidget {
                       textColor: const Color(0xffFAF9F9),
                       fontWeight: FontWeight.bold,
                       alignment: Alignment.bottomLeft,
-                      padding: const EdgeInsets.only(left: 20, bottom: 5),
+                      padding: const EdgeInsets.only(left: 13, bottom: 5),
                     ),
                     flexibleText(
                       text:
@@ -33,7 +33,8 @@ class PostPage extends StatelessWidget {
                       textColor: const Color(0xffFAF9F9),
                       fontWeight: FontWeight.bold,
                       alignment: Alignment.bottomLeft,
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding:
+                          const EdgeInsets.only(left: 13, right: 20, bottom: 5),
                     ),
                   ],
                 ),
