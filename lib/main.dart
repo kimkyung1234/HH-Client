@@ -1,5 +1,7 @@
+import 'package:app/pages/home_page.dart';
 import 'package:app/pages/login_page.dart';
 import 'package:app/providers/login.dart';
+import 'package:app/providers/page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,10 +17,12 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<LoginHelper>(create: (_) => LoginHelper()),
+        ChangeNotifierProvider<Pages>(create: (_) => Pages()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginPage(),
+        // home: LoginPage(),
+        home: HomePage(),
       ),
     );
   }
