@@ -29,7 +29,7 @@ class PostPage extends StatelessWidget {
                     flexibleText(
                       text:
                           'Let people know by posting about your pet. And communicate freely with various people.',
-                      fontSize: 12,
+                      fontSize: 10,
                       textColor: const Color(0xffFAF9F9),
                       fontWeight: FontWeight.bold,
                       alignment: Alignment.bottomLeft,
