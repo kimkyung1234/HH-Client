@@ -1,4 +1,5 @@
 import 'package:app/models/post.dart';
+import 'package:app/pages/detail_page.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,19 @@ class ListCardWidget extends StatelessWidget {
           itemBuilder: (_, index) {
             final data = snapshot.data?.posts?[index];
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailPage(
+                      strText: data?.strText ?? '',
+                      strImage: data?.strImage ?? '',
+                      strUser: data?.strUser ?? '',
+                      strDescription: data?.strDescription ?? '',
+                    ),
+                  ),
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),

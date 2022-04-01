@@ -31,7 +31,10 @@ class AddPostPage extends StatelessWidget {
                     },
                     child: Container(
                       height: 350,
-                      color: const Color(0xffDBDADA),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffDBDADA),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                       margin: const EdgeInsets.all(20),
                       child: const Center(
                         child: Icon(
@@ -47,11 +50,13 @@ class AddPostPage extends StatelessWidget {
                     },
                     child: Container(
                       height: 350,
-                      color: const Color(0xffDBDADA),
                       margin: const EdgeInsets.all(20),
-                      child: Image.file(
-                        File(provider.getImage!.path),
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.file(
+                          File(provider.getImage!.path),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -69,11 +74,11 @@ class AddPostPage extends StatelessWidget {
                         ? 'Name Can\'t Be Empty'
                         : null,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(20.0),
                       borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
                 ),
@@ -89,11 +94,11 @@ class AddPostPage extends StatelessWidget {
                         ? 'Name Can\'t Be Empty'
                         : null,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(20.0),
                       borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
                 ),

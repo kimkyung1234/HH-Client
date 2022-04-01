@@ -1,4 +1,5 @@
 import 'package:app/models/post.dart';
+import 'package:app/pages/detail_page.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:flutter/material.dart';
@@ -32,8 +33,21 @@ class MyPostListWidget extends StatelessWidget {
               mainAxisSpacing: 12,
               itemCount: snapshot.data!.posts!.length,
               itemBuilder: (context, index) {
+                var data = snapshot.data!.posts![index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                          strText: data.strText ?? '',
+                          strImage: data.strImage ?? '',
+                          strUser: data.strUser ?? '',
+                          strDescription: data.strDescription ?? '',
+                        ),
+                      ),
+                    );
+                  },
                   child: Container(
                     decoration: const BoxDecoration(
                         color: Colors.transparent,
@@ -41,7 +55,7 @@ class MyPostListWidget extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       child: carryImageWidget(
-                        url: snapshot.data!.posts![index].strImage ?? '',
+                        url: data.strImage ?? '',
                         boxFit: BoxFit.fitHeight,
                       ),
                     ),
