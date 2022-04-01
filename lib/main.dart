@@ -1,4 +1,3 @@
-import 'package:app/pages/home_page.dart';
 import 'package:app/pages/login_page.dart';
 import 'package:app/providers/add_post.dart';
 import 'package:app/providers/login.dart';
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
         )),
         debugShowCheckedModeBanner: false,
         home: LoginPage(),
-        // home: HomePage(),
       ),
     );
   }

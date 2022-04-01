@@ -119,13 +119,6 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   CupertinoButton(
                     onPressed: () {
-                      // Navigator.pop(context);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => HomePage(),
-                      //   ),
-                      // );
                       signIn(
                         id: idText.text,
                         password: passwordText.text,
