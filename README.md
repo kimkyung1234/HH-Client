@@ -1,4 +1,4 @@
-# HH-Client
+# Server
 
 Server - https://github.com/oaj6634/HH
 
