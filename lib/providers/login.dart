@@ -4,6 +4,9 @@ class LoginHelper with ChangeNotifier {
   bool invisible = true;
   bool get getVisible => invisible;
 
+  bool? _isLoading;
+  bool? get getIsLoading => _isLoading;
+
   void setInvisible() {
     invisible = true;
     notifyListeners();
