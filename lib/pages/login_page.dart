@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:app/pages/home_page.dart';
 import 'package:app/providers/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -14,8 +17,15 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const FlutterLogo(
-              size: 130,
+            // const FlutterLogo(
+            //   size: 130,
+            // ),
+            Center(
+              child: SvgPicture.asset(
+                'assets/image/logo2.svg',
+                width: 150,
+                height: 150,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(40),

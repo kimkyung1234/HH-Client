@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.0.2
   flutter_staggered_grid_view: ^0.6.1
   image_picker: ^0.8.4+11
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
       - assets/posts.json
       - assets/profile.json
       - assets/my_post.json
+      - assets/image/logo2.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

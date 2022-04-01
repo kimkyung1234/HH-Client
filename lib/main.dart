@@ -1,4 +1,5 @@
 import 'package:app/pages/home_page.dart';
+import 'package:app/pages/login_page.dart';
 import 'package:app/providers/add_post.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/providers/page.dart';
@@ -27,8 +28,8 @@ class MyApp extends StatelessWidget {
           systemOverlayStyle: SystemUiOverlayStyle.dark,
         )),
         debugShowCheckedModeBanner: false,
-        // home: LoginPage(),
-        home: HomePage(),
+        home: LoginPage(),
+        // home: HomePage(),
       ),
     );
   }
