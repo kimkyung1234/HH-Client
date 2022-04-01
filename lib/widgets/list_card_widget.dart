@@ -53,6 +53,7 @@ class ListCardWidget extends StatelessWidget {
                         children: <Widget>[
                           flexibleText(
                             text: data?.strText ?? '',
+                            fontWeight: FontWeight.bold,
                             alignment: Alignment.topLeft,
                             overflow: TextOverflow.ellipsis,
                           ),

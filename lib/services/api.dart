@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:app/models/post.dart';
 import 'package:app/models/profile.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 
 Future<String> _loadAddressAsset(String location) async {
   return await rootBundle.loadString(location);
@@ -21,4 +23,20 @@ Future<Profile> getProfile() async {
 Future<Post> getMyPost() async {
   final response = await _loadAddressAsset('assets/my_post.json');
   return Post.fromJson(jsonDecode(response));
+}
+
+void postRequest(String text, String image, String description) async {
+  String url = '';
+
+  Response response = await post(
+    Uri.parse(url),
+    headers: {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    },
+    body: jsonEncode({
+      'strText': text,
+      'strImage': image,
+      'strDescription': description,
+    }),
+  );
 }

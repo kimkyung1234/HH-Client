@@ -56,6 +56,8 @@ class ProfilePage extends StatelessWidget {
               flexibleText(
                 text: data.strDescription!,
                 fontSize: 19,
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(left: 24),
               ),
               const SizedBox(height: 20),
               flexibleText(
