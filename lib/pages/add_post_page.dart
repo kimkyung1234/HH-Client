@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 class AddPostPage extends StatelessWidget {
   final _name = TextEditingController();
+  final _desc = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +65,29 @@ class AddPostPage extends StatelessWidget {
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     hintText: 'Name*',
-                    errorText:
-                        provider.getValidate ? 'Name Can\'t Be Empty' : null,
+                    errorText: provider.getNameValidate
+                        ? 'Name Can\'t Be Empty'
+                        : null,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                TextField(
+                  controller: _desc,
+                  cursorColor: Colors.black,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 8,
+                  decoration: InputDecoration(
+                    hintText: 'Description*',
+                    errorText: provider.getDescValidate
+                        ? 'Name Can\'t Be Empty'
+                        : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
                       borderSide: const BorderSide(color: Colors.white),
@@ -78,9 +100,13 @@ class AddPostPage extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     _name.text.isEmpty
-                        ? provider.setValidate(true)
-                        : provider.setValidate(false);
+                        ? provider.setNameValidate(true)
+                        : provider.setNameValidate(false);
+                    _desc.text.isEmpty
+                        ? provider.setDescValidate(true)
+                        : provider.setDescValidate(false);
                     provider.setName(_name.text);
+                    provider.setDesc(_name.text);
                   },
                   child: const Text('Submit'),
                 )

@@ -12,13 +12,22 @@ class AddPost with ChangeNotifier {
     notifyListeners();
   }
 
-  bool _validate = false;
-  bool get getValidate => _validate;
+  bool _nameValidate = false;
+  bool get getNameValidate => _nameValidate;
+  bool _descValidate = false;
+  bool get getDescValidate => _descValidate;
   String? _name;
   String? get getName => _name;
+  String? _desc;
+  String? get getDesc => _desc;
 
-  void setValidate(bool validate) {
-    _validate = validate;
+  void setNameValidate(bool nameValidate) {
+    _nameValidate = nameValidate;
+    notifyListeners();
+  }
+
+  void setDescValidate(bool descValidate) {
+    _descValidate = descValidate;
     notifyListeners();
   }
 
@@ -27,9 +36,17 @@ class AddPost with ChangeNotifier {
     notifyListeners();
   }
 
+  void setDesc(String desc) {
+    _desc = desc;
+    notifyListeners();
+  }
+
   void reset() async {
     _image = null;
     _name = null;
+    _desc = null;
+    _descValidate = false;
+    _nameValidate = false;
     notifyListeners();
   }
 }
