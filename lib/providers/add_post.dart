@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class GalleryImage with ChangeNotifier {
+class AddPost with ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
   PickedFile? _image;
   PickedFile? get getImage => _image;
@@ -12,8 +12,24 @@ class GalleryImage with ChangeNotifier {
     notifyListeners();
   }
 
+  bool _validate = false;
+  bool get getValidate => _validate;
+  String? _name;
+  String? get getName => _name;
+
+  void setValidate(bool validate) {
+    _validate = validate;
+    notifyListeners();
+  }
+
+  void setName(String name) {
+    _name = name;
+    notifyListeners();
+  }
+
   void reset() async {
     _image = null;
+    _name = null;
     notifyListeners();
   }
 }

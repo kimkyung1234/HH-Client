@@ -1,6 +1,6 @@
 import 'package:app/models/profile.dart';
 import 'package:app/pages/add_post_page.dart';
-import 'package:app/providers/image.dart';
+import 'package:app/providers/add_post.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:app/widgets/my_post_List.dart';
@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<GalleryImage>(context);
+    var provider = Provider.of<AddPost>(context);
 
     return Scaffold(
       appBar: AppBar(

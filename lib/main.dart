@@ -1,6 +1,5 @@
-import 'package:app/providers/image.dart';
 import 'package:app/pages/home_page.dart';
-import 'package:app/pages/login_page.dart';
+import 'package:app/providers/add_post.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/providers/page.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<GalleryImage>(create: (_) => GalleryImage()),
+        ChangeNotifierProvider<AddPost>(create: (_) => AddPost()),
         ChangeNotifierProvider<LoginHelper>(create: (_) => LoginHelper()),
         ChangeNotifierProvider<Pages>(create: (_) => Pages()),
       ],
