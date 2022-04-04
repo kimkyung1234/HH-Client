@@ -5,7 +5,6 @@ import 'package:app/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart';
-import 'package:async/async.dart';
 
 class AddPostPage extends StatelessWidget {
   final _name = TextEditingController();
@@ -113,18 +112,15 @@ class AddPostPage extends StatelessWidget {
                     _desc.text.isEmpty
                         ? provider.setDescValidate(true)
                         : provider.setDescValidate(false);
-                    provider.setName(_name.text);
-                    provider.setDesc(_name.text);
-
-                    var a = basename(provider.getImage!.path);
 
                     if (provider.getNameValidate == false ||
                         provider.getDescValidate == false ||
                         provider.getImage != null) {
                       postRequest(
-                          provider.getName ?? '',
-                          basename(provider.getImage!.path),
-                          provider.getDesc ?? '');
+                        _name.text,
+                        basename(provider.getImage!.path),
+                        _desc.text,
+                      );
                     }
                   },
                   child: const Text('Submit'),

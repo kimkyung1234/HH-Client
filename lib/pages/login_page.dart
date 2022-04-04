@@ -1,57 +1,31 @@
-import 'dart:convert';
-
-import 'package:app/pages/home_page.dart';
+import 'package:app/pages/signup_page.dart';
 import 'package:app/providers/login.dart';
+import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
   final idText = TextEditingController();
   final passwordText = TextEditingController();
-
-  signIn(
-      {required String id,
-      required String password,
-      required BuildContext context}) async {
-    var data = jsonEncode({'id': id, 'password': password});
-    var jsonResponse;
-    var response = await post(
-      Uri.parse(''),
-      headers: {'Content-type': 'application/json'},
-      body: data,
-    );
-
-    if (response.statusCode == 200) {
-      jsonResponse = json.decode(response.body);
-      if (jsonResponse != null) {
-        Navigator.pop(context);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ),
-        );
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<LoginHelper>(context);
 
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: SvgPicture.asset(
                 'assets/image/logo2.svg',
-                width: 150,
-                height: 150,
+                width: 100,
+                height: 100,
               ),
             ),
             Padding(
@@ -119,14 +93,32 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   CupertinoButton(
                     onPressed: () {
-                      signIn(
-                        id: idText.text,
-                        password: passwordText.text,
-                        context: context,
+                      // signIn(
+                      //   id: idText.text,
+                      //   password: passwordText.text,
+                      //   context: context,
+                      // );
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
                       );
                     },
-                    child: const Text('Login'),
+                    child: const Text('Sign In'),
                     color: Colors.black,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignupPage(),
+                        ),
+                      );
+                    },
+                    child: const Text('Sign Up'),
                   ),
                 ],
               ),
