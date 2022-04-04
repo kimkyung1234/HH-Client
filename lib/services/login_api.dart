@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:app/pages/home_page.dart';
+import 'package:app/providers/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 
 signIn(
     {required String id,
@@ -35,17 +38,53 @@ signUp(
     required String email,
     required String password,
     required BuildContext context}) async {
-  var data = jsonEncode({'user_name': user, 'id': email, 'password': password});
+  String url = '';
+
   var jsonResponse;
-  var response = await post(
-    Uri.parse(''),
+  Response response = await post(
+    Uri.parse(url),
     headers: {'Content-type': 'application/json'},
-    body: data,
+    body: jsonEncode({'user_name': user, 'id': email, 'password': password}),
   );
+
+  var provider = Provider.of<UserName>(context);
 
   if (response.statusCode == 200) {
     jsonResponse = json.decode(response.body);
     if (jsonResponse != null) {
+      String userName = jsonResponse['user_name'];
+      provider.setUserName(userName);
+
+      Navigator.pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    }
+  }
+}
+
+void postEmailCode(
+    {required String emailCode, required BuildContext context}) async {
+  String url = '';
+
+  var jsonResponse;
+  Response response = await post(
+    Uri.parse(url),
+    headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+    body: jsonEncode({'email_code': emailCode}),
+  );
+
+  var provider = Provider.of<UserName>(context);
+
+  if (response.statusCode == 200) {
+    jsonResponse = json.decode(response.body);
+    if (jsonResponse != null) {
+      String userName = jsonResponse['user_name'];
+      provider.setUserName(userName);
+
       Navigator.pop(context);
       Navigator.push(
         context,

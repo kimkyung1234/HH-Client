@@ -1,3 +1,4 @@
+import 'package:app/pages/login/vertification_page.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/services/login_api.dart';
 import 'package:flutter/cupertino.dart';
@@ -131,11 +132,17 @@ class SignupPage extends StatelessWidget {
                     if (provider.getUserValidate == false ||
                         provider.getEmailValidate == false ||
                         provider.getPasswordValidate == false) {
-                      signUp(
-                        user: _user.text,
-                        email: _email.text,
-                        password: _password.text,
-                        context: context,
+                      // signUp(
+                      //   user: _user.text,
+                      //   email: _email.text,
+                      //   password: _password.text,
+                      //   context: context,
+                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VertificationPage(),
+                        ),
                       );
                     } else {
                       var snackBar = const SnackBar(
