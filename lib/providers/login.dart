@@ -16,4 +16,26 @@ class LoginHelper with ChangeNotifier {
     invisible = false;
     notifyListeners();
   }
+
+  bool _userValidate = false;
+  bool get getUserValidate => _userValidate;
+  bool _emailValidate = false;
+  bool get getEmailValidate => _emailValidate;
+  bool _passwordValidate = false;
+  bool get getPasswordValidate => _passwordValidate;
+
+  void setUserValidate(bool userValidate) {
+    _userValidate = userValidate;
+    notifyListeners();
+  }
+
+  void setEmailValidate(bool emailVaildate) {
+    _emailValidate = emailVaildate;
+    notifyListeners();
+  }
+
+  void setPasswordValidate(bool passwordValidate) {
+    _passwordValidate = passwordValidate;
+    notifyListeners();
+  }
 }

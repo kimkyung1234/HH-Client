@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SignupPage extends StatelessWidget {
-  final userText = TextEditingController();
-  final idText = TextEditingController();
-  final passwordText = TextEditingController();
+  final _user = TextEditingController();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,13 @@ class SignupPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 100),
                 TextField(
-                  controller: userText,
+                  controller: _user,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                    labelText: 'User Name',
+                    labelText: 'User Name*',
+                    errorText: provider.getUserValidate
+                        ? 'User Name Can\'t Be Empty'
+                        : null,
                     labelStyle: const TextStyle(color: Colors.black),
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -46,10 +49,13 @@ class SignupPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextField(
-                  controller: idText,
+                  controller: _email,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    labelText: 'Email Id*',
+                    errorText: provider.getEmailValidate
+                        ? 'Email Can\'t Be Empty'
+                        : null,
                     labelStyle: const TextStyle(color: Colors.black),
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -65,10 +71,13 @@ class SignupPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextField(
-                  controller: passwordText,
+                  controller: _password,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     labelText: 'Password',
+                    errorText: provider.getPasswordValidate
+                        ? 'Password Can\'t Be Empty'
+                        : null,
                     labelStyle: const TextStyle(color: Colors.black),
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -105,7 +114,19 @@ class SignupPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 CupertinoButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _user.text.isEmpty
+                        ? provider.setUserValidate(true)
+                        : provider.setUserValidate(false);
+
+                    _email.text.isEmpty
+                        ? provider.setEmailValidate(true)
+                        : provider.setEmailValidate(false);
+
+                    _password.text.isEmpty
+                        ? provider.setPasswordValidate(true)
+                        : provider.setPasswordValidate(false);
+                  },
                   child: const Text('Sign Up'),
                   color: Colors.black,
                 ),
