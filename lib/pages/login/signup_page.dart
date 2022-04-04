@@ -1,4 +1,5 @@
 import 'package:app/providers/login.dart';
+import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -74,7 +75,7 @@ class SignupPage extends StatelessWidget {
                   controller: _password,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                    labelText: 'Password',
+                    labelText: 'Password*',
                     errorText: provider.getPasswordValidate
                         ? 'Password Can\'t Be Empty'
                         : null,
@@ -126,6 +127,22 @@ class SignupPage extends StatelessWidget {
                     _password.text.isEmpty
                         ? provider.setPasswordValidate(true)
                         : provider.setPasswordValidate(false);
+
+                    if (provider.getUserValidate == false ||
+                        provider.getEmailValidate == false ||
+                        provider.getPasswordValidate == false) {
+                      signUp(
+                        user: _user.text,
+                        email: _email.text,
+                        password: _password.text,
+                        context: context,
+                      );
+                    } else {
+                      var snackBar = const SnackBar(
+                          content: Text('Wrong text please check'));
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
                   },
                   child: const Text('Sign Up'),
                   color: Colors.black,

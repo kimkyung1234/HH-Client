@@ -121,7 +121,7 @@ class AddPostPage extends StatelessWidget {
                         basename(provider.getImage!.path),
                         _desc.text,
                       );
-                    }
+                    } else {}
                   },
                   child: const Text('Submit'),
                 )

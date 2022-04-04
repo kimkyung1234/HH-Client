@@ -1,4 +1,4 @@
-import 'package:app/pages/signup_page.dart';
+import 'package:app/pages/login/signup_page.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'home_page.dart';
+import '../home_page.dart';
 
 class LoginPage extends StatelessWidget {
   final idText = TextEditingController();
