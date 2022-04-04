@@ -38,4 +38,11 @@ class LoginHelper with ChangeNotifier {
     _passwordValidate = passwordValidate;
     notifyListeners();
   }
+
+  void reset() async {
+    _userValidate = false;
+    _emailValidate = false;
+    _passwordValidate = false;
+    notifyListeners();
+  }
 }

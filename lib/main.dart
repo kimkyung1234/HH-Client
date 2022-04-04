@@ -2,6 +2,7 @@ import 'package:app/pages/login/login_page.dart';
 import 'package:app/providers/add_post.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/providers/page.dart';
+import 'package:app/providers/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<UserName>(create: (_) => UserName()),
         ChangeNotifierProvider<AddPost>(create: (_) => AddPost()),
         ChangeNotifierProvider<LoginHelper>(create: (_) => LoginHelper()),
         ChangeNotifierProvider<Pages>(create: (_) => Pages()),

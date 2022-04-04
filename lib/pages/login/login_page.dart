@@ -1,3 +1,4 @@
+import 'package:app/pages/home_page.dart';
 import 'package:app/pages/login/signup_page.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/services/api.dart';
@@ -6,8 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../home_page.dart';
-
 class LoginPage extends StatelessWidget {
   final idText = TextEditingController();
   final passwordText = TextEditingController();
@@ -15,6 +14,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<LoginHelper>(context);
+    var loginHelper = Provider.of<LoginHelper>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -111,6 +111,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
+                      loginHelper.reset();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
