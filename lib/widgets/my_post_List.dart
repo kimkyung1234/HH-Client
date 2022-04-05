@@ -13,8 +13,19 @@ class MyPostListWidget extends StatelessWidget {
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.data?.posts?.length == null) {
-          return const Center(child: Text('No data'));
+        } else if (snapshot.data?.posts?.length == 0) {
+          return Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              color: Color(0xffEEEEEE),
+            ),
+            child: const Center(
+              child: Text('No data'),
+            ),
+          );
         }
 
         return Container(

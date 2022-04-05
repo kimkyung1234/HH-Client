@@ -1,4 +1,5 @@
 import 'package:app/pages/profile/edit_profile_page.dart';
+import 'package:app/pages/setting_page.dart';
 import 'package:app/providers/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,13 @@ class PopupMenu extends StatelessWidget {
             MaterialPageRoute(builder: (context) => EditProfilePage()),
           );
         }
+        if (result == 1) {
+          provider.reset();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingPage()),
+          );
+        }
       },
       itemBuilder: (context) => [
         const PopupMenuItem(
@@ -27,7 +35,7 @@ class PopupMenu extends StatelessWidget {
         ),
         const PopupMenuItem(
           value: 1,
-          child: Text('Like'),
+          child: Text('Settings'),
         ),
       ],
       icon: const Icon(

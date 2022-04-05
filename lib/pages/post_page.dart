@@ -57,12 +57,27 @@ class PostPage extends StatelessWidget {
         body: Column(
           children: [
             const SizedBox(height: 30),
-            flexibleText(
-              text: 'Posts',
-              fontWeight: FontWeight.bold,
-              fontSize: 43,
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                flexibleText(
+                  text: 'Posts',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 43,
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(20),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.list,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ],
             ),
             Expanded(child: ListCardWidget()),
           ],

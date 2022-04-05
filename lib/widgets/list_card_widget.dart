@@ -12,7 +12,7 @@ class ListCardWidget extends StatelessWidget {
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.data?.posts?.length == null) {
+        } else if (snapshot.data?.posts?.length == 0) {
           return const Center(child: Text('No data'));
         }
         return ListView.separated(
@@ -35,10 +35,7 @@ class ListCardWidget extends StatelessWidget {
                   ),
                 );
               },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
+              child: SizedBox(
                 height: 130,
                 child: Row(
                   children: <Widget>[
