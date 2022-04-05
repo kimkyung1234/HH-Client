@@ -15,11 +15,24 @@ class ProfileWidget extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: Row(
         children: [
-          SizedBox(
-            width: 130,
-            height: 130,
-            child: carryImageWidget(url: data.strImage ?? ''),
-          ),
+          data.strImage == ''
+              ? Container(
+                  width: 130,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffDBDADA),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: const Icon(
+                    Icons.person_outlined,
+                    size: 70,
+                  ),
+                )
+              : SizedBox(
+                  width: 130,
+                  height: 130,
+                  child: carryImageWidget(url: data.strImage ?? ''),
+                ),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

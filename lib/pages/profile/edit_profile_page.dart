@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class EditProfilePage extends StatelessWidget {
+  final _name = TextEditingController();
+  final _desc = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<EditProfile>(context);
@@ -65,9 +68,13 @@ class EditProfilePage extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(right: 20),
                   child: TextField(
+                    controller: _name,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
                       hintText: 'Name*',
+                      errorText: provider.getNameValidate
+                          ? 'Name Can\'t Be Empty'
+                          : null,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: const BorderSide(color: Colors.white),
@@ -87,11 +94,15 @@ class EditProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 TextField(
+                  controller: _desc,
                   cursorColor: Colors.black,
                   keyboardType: TextInputType.multiline,
                   maxLines: 8,
                   decoration: InputDecoration(
                     hintText: 'Description*',
+                    errorText: provider.getDescValidate
+                        ? 'Name Can\'t Be Empty'
+                        : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: const BorderSide(color: Colors.white),
@@ -103,7 +114,23 @@ class EditProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 CupertinoButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _name.text.isEmpty
+                        ? provider.setNameValidate(true)
+                        : provider.setNameValidate(false);
+                    _desc.text.isEmpty
+                        ? provider.setDescValidate(true)
+                        : provider.setDescValidate(false);
+
+                    if (provider.getNameValidate == false ||
+                        provider.getDescValidate == false) {
+                      // postRequest(
+                      //   _name.text,
+                      //   basename(provider.getImage!.path),
+                      //   _desc.text,
+                      // );
+                    }
+                  },
                   child: const Text('Save'),
                   color: Colors.black,
                 )
