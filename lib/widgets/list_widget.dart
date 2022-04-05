@@ -37,37 +37,41 @@ class ListWidget extends StatelessWidget {
               ),
             );
           },
-          child: SizedBox(
-            height: 130,
-            child: Row(
-              children: <Widget>[
-                carryImageWidget(
-                  url: data?.strImage ?? '',
-                  boxFit: BoxFit.scaleDown,
-                ),
-                const SizedBox(width: 10),
-                Flexible(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      flexibleText(
-                        text: data?.strText ?? '',
-                        textColor: theme.accentColor,
-                        fontWeight: FontWeight.bold,
-                        alignment: Alignment.topLeft,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      flexibleText(
-                        text: data?.strUser ?? '',
-                        textColor: theme.accentColor,
-                        fontSize: 14,
-                        alignment: Alignment.topLeft,
-                      ),
-                    ],
+          child: Row(
+            children: [
+              Container(
+                height: 130,
+                width: 130,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: carryImageWidget(
+                    url: data?.strImage ?? '',
+                    boxFit: BoxFit.cover,
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 10),
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    flexibleText(
+                      text: data?.strText ?? '',
+                      textColor: theme.accentColor,
+                      fontWeight: FontWeight.bold,
+                      alignment: Alignment.topLeft,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    flexibleText(
+                      text: data?.strUser ?? '',
+                      textColor: theme.accentColor,
+                      fontSize: 14,
+                      alignment: Alignment.topLeft,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       },
