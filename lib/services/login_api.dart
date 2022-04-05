@@ -63,6 +63,9 @@ void signUp(
         ),
       );
     }
+  } else {
+    var snackBar = const SnackBar(content: Text('Something Wrong'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 
@@ -93,5 +96,8 @@ void postEmailCode(
         ),
       );
     }
+  } else {
+    var snackBar = const SnackBar(content: Text('Something Wrong'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

@@ -123,12 +123,14 @@ class EditProfilePage extends StatelessWidget {
                         name: _name.text,
                         image: '',
                         description: _desc.text,
+                        context: context,
                       );
                     } else if (provider.getNameValidate == false) {
                       postEditProfile(
                         name: _name.text,
                         image: basename(provider.getImage!.path),
                         description: _desc.text,
+                        context: context,
                       );
                     }
                   },

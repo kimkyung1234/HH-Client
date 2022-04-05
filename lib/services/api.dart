@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:app/models/post.dart';
 import 'package:app/models/profile.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
@@ -28,7 +29,8 @@ Future<Post> getMyPost() async {
 void postRequest(
     {required String text,
     required String image,
-    required String description}) async {
+    required String description,
+    required BuildContext context}) async {
   String url = '';
 
   Response response = await post(
@@ -42,12 +44,20 @@ void postRequest(
       'strDescription': description,
     }),
   );
+
+  if (response.statusCode == 200) {
+    Navigator.pop(context);
+  } else {
+    var snackBar = const SnackBar(content: Text('Something Wrong'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }
 
 void postEditProfile(
     {required String name,
     required String image,
-    required String description}) async {
+    required String description,
+    required BuildContext context}) async {
   String url = '';
 
   Response response = await post(
@@ -61,4 +71,11 @@ void postEditProfile(
       'strDescription': description,
     }),
   );
+
+  if (response.statusCode == 200) {
+    Navigator.pop(context);
+  } else {
+    var snackBar = const SnackBar(content: Text('Something Wrong'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

@@ -123,10 +123,10 @@ class AddPostPage extends StatelessWidget {
                     } else if (provider.getNameValidate == false ||
                         provider.getDescValidate == false) {
                       postRequest(
-                        text: _name.text,
-                        image: basename(provider.getImage!.path),
-                        description: _desc.text,
-                      );
+                          text: _name.text,
+                          image: basename(provider.getImage!.path),
+                          description: _desc.text,
+                          context: context);
                     }
                   },
                   child: const Text('Submit'),
