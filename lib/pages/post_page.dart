@@ -1,4 +1,6 @@
+import 'package:app/providers/page.dart';
 import 'package:app/providers/theme.dart';
+import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:app/widgets/list_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:provider/provider.dart';
 class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Pages>(context);
     var themeMode = Provider.of<ThemeChanger>(context);
     var theme = themeMode.getThemeData;
 
@@ -72,22 +75,37 @@ class PostPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 43,
                   alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.only(left: 20, top: 10, bottom: 5),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.list,
-                      color: theme.accentColor,
-                      size: 30,
-                    ),
-                  ),
+                  child: provider.getGridSort
+                      ? IconButton(
+                          onPressed: () {
+                            provider.changeSort(false);
+                          },
+                          icon: Icon(
+                            Icons.list,
+                            color: theme.accentColor,
+                            size: 30,
+                          ),
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            provider.changeSort(true);
+                          },
+                          icon: Icon(
+                            Icons.space_dashboard_outlined,
+                            color: theme.accentColor,
+                            size: 30,
+                          ),
+                        ),
                 ),
               ],
             ),
-            Expanded(child: ListCardWidget()),
+            Expanded(
+              child: ListCardWidget(future: getList()),
+            ),
           ],
         ),
       ),

@@ -36,6 +36,15 @@ class SettingPage extends StatelessWidget {
               },
             ),
           ),
+          settingMenu(
+            text: 'Change password',
+            textColor: theme.accentColor,
+            widget: Icon(
+              Icons.arrow_forward_ios,
+              color: theme.accentColor,
+            ),
+            onTap: () {},
+          ),
         ],
       ),
     );
