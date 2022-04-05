@@ -25,7 +25,10 @@ Future<Post> getMyPost() async {
   return Post.fromJson(jsonDecode(response));
 }
 
-void postRequest(String text, String image, String description) async {
+void postRequest(
+    {required String text,
+    required String image,
+    required String description}) async {
   String url = '';
 
   Response response = await post(
@@ -35,6 +38,25 @@ void postRequest(String text, String image, String description) async {
     },
     body: jsonEncode({
       'strText': text,
+      'strImage': image,
+      'strDescription': description,
+    }),
+  );
+}
+
+void postEditProfile(
+    {required String name,
+    required String image,
+    required String description}) async {
+  String url = '';
+
+  Response response = await post(
+    Uri.parse(url),
+    headers: {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    },
+    body: jsonEncode({
+      'strName': name,
       'strImage': image,
       'strDescription': description,
     }),

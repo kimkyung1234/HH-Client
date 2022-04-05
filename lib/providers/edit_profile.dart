@@ -14,22 +14,14 @@ class EditProfile with ChangeNotifier {
 
   bool _nameValidate = false;
   bool get getNameValidate => _nameValidate;
-  bool _descValidate = false;
-  bool get getDescValidate => _descValidate;
 
   void setNameValidate(bool nameValidate) {
     _nameValidate = nameValidate;
     notifyListeners();
   }
 
-  void setDescValidate(bool descValidate) {
-    _descValidate = descValidate;
-    notifyListeners();
-  }
-
   void reset() async {
     _image = null;
-    _descValidate = false;
     _nameValidate = false;
     notifyListeners();
   }

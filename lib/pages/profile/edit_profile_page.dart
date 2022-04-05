@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:app/providers/edit_profile.dart';
+import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:path/path.dart';
 
 class EditProfilePage extends StatelessWidget {
   final _name = TextEditingController();
@@ -22,7 +24,7 @@ class EditProfilePage extends StatelessWidget {
         ),
         leading: const BackButton(color: Colors.black),
       ),
-      body: ListView(
+      body: Column(
         children: [
           Row(
             children: [
@@ -90,19 +92,16 @@ class EditProfilePage extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             child: Column(
               children: [
                 TextField(
                   controller: _desc,
                   cursorColor: Colors.black,
                   keyboardType: TextInputType.multiline,
-                  maxLines: 8,
+                  maxLines: 3,
                   decoration: InputDecoration(
-                    hintText: 'Description*',
-                    errorText: provider.getDescValidate
-                        ? 'Name Can\'t Be Empty'
-                        : null,
+                    hintText: 'Description',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: const BorderSide(color: Colors.white),
@@ -118,17 +117,19 @@ class EditProfilePage extends StatelessWidget {
                     _name.text.isEmpty
                         ? provider.setNameValidate(true)
                         : provider.setNameValidate(false);
-                    _desc.text.isEmpty
-                        ? provider.setDescValidate(true)
-                        : provider.setDescValidate(false);
 
-                    if (provider.getNameValidate == false ||
-                        provider.getDescValidate == false) {
-                      // postRequest(
-                      //   _name.text,
-                      //   basename(provider.getImage!.path),
-                      //   _desc.text,
-                      // );
+                    if (provider.getImage == null) {
+                      postEditProfile(
+                        name: _name.text,
+                        image: '',
+                        description: _desc.text,
+                      );
+                    } else if (provider.getNameValidate == false) {
+                      postEditProfile(
+                        name: _name.text,
+                        image: basename(provider.getImage!.path),
+                        description: _desc.text,
+                      );
                     }
                   },
                   child: const Text('Save'),

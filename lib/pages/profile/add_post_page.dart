@@ -123,9 +123,9 @@ class AddPostPage extends StatelessWidget {
                     } else if (provider.getNameValidate == false ||
                         provider.getDescValidate == false) {
                       postRequest(
-                        _name.text,
-                        basename(provider.getImage!.path),
-                        _desc.text,
+                        text: _name.text,
+                        image: basename(provider.getImage!.path),
+                        description: _desc.text,
                       );
                     }
                   },
