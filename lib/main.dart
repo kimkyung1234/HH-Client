@@ -1,5 +1,6 @@
 import 'package:app/pages/login/login_page.dart';
 import 'package:app/providers/add_post.dart';
+import 'package:app/providers/edit_profile.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/providers/page.dart';
 import 'package:app/providers/user.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<EditProfile>(create: (_) => EditProfile()),
         ChangeNotifierProvider<UserName>(create: (_) => UserName()),
         ChangeNotifierProvider<AddPost>(create: (_) => AddPost()),
         ChangeNotifierProvider<LoginHelper>(create: (_) => LoginHelper()),

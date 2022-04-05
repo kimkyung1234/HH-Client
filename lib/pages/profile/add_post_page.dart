@@ -131,7 +131,7 @@ class AddPostPage extends StatelessWidget {
                   },
                   child: const Text('Submit'),
                   color: Colors.black,
-                )
+                ),
               ],
             ),
           ),
