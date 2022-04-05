@@ -1,6 +1,7 @@
 import 'package:app/pages/profile/edit_profile_page.dart';
 import 'package:app/pages/setting_page.dart';
 import 'package:app/providers/edit_profile.dart';
+import 'package:app/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +9,11 @@ class PopupMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<EditProfile>(context);
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return PopupMenuButton<int>(
+      color: theme.canvasColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20.0)),
       ),
@@ -29,18 +34,24 @@ class PopupMenu extends StatelessWidget {
         }
       },
       itemBuilder: (context) => [
-        const PopupMenuItem(
+        PopupMenuItem(
           value: 0,
-          child: Text('Edit Profile'),
+          child: Text(
+            'Edit Profile',
+            style: TextStyle(color: theme.accentColor),
+          ),
         ),
-        const PopupMenuItem(
+        PopupMenuItem(
           value: 1,
-          child: Text('Settings'),
+          child: Text(
+            'Settings',
+            style: TextStyle(color: theme.accentColor),
+          ),
         ),
       ],
-      icon: const Icon(
+      icon: Icon(
         Icons.more_vert,
-        color: Colors.black,
+        color: theme.accentColor,
       ),
     );
   }

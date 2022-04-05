@@ -1,6 +1,8 @@
 import 'package:app/models/profile.dart';
+import 'package:app/providers/theme.dart';
 import 'package:app/widgets/common.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileWidget extends StatelessWidget {
   final Profile data;
@@ -11,6 +13,9 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return Container(
       margin: const EdgeInsets.all(20),
       child: Row(
@@ -23,8 +28,9 @@ class ProfileWidget extends StatelessWidget {
                     color: const Color(0xffDBDADA),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.person_outlined,
+                    color: theme.accentColor,
                     size: 70,
                   ),
                 )
@@ -39,11 +45,13 @@ class ProfileWidget extends StatelessWidget {
             children: [
               flexibleText(
                 text: data.strName ?? '',
+                textColor: theme.accentColor,
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
               flexibleText(
                 text: data.strEmail ?? '',
+                textColor: theme.accentColor,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),

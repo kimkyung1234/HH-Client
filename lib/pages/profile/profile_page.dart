@@ -3,6 +3,7 @@ import 'package:app/pages/profile/add_post_page.dart';
 import 'package:app/pages/profile/edit_profile_page.dart';
 import 'package:app/providers/add_post.dart';
 import 'package:app/providers/edit_profile.dart';
+import 'package:app/providers/theme.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:app/widgets/my_post_List.dart';
@@ -16,14 +17,18 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<AddPost>(context);
     var editProfile = Provider.of<EditProfile>(context);
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
 
     return Scaffold(
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: const Text(
+        title: Text(
           'Profile',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style:
+              TextStyle(color: theme.accentColor, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {
@@ -35,7 +40,7 @@ class ProfilePage extends StatelessWidget {
               ),
             );
           },
-          icon: const Icon(Icons.add_box_outlined, color: Colors.black),
+          icon: Icon(Icons.add_box_outlined, color: theme.accentColor),
         ),
         actions: [PopupMenu()],
       ),
@@ -63,6 +68,7 @@ class ProfilePage extends StatelessWidget {
                     )
                   : flexibleText(
                       text: data.strDescription!,
+                      textColor: theme.accentColor,
                       fontSize: 19,
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 24),
@@ -70,6 +76,7 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 20),
               flexibleText(
                   text: 'Posts',
+                  textColor: theme.accentColor,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   alignment: Alignment.topLeft,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app/providers/add_post.dart';
+import 'package:app/providers/theme.dart';
 import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +15,20 @@ class AddPostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AddPost>(context);
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return Scaffold(
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: const Text(
+        title: Text(
           'New Post',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style:
+              TextStyle(color: theme.accentColor, fontWeight: FontWeight.bold),
         ),
-        leading: const BackButton(color: Colors.black),
+        leading: BackButton(color: theme.accentColor),
       ),
       body: ListView(
         children: [
@@ -35,7 +41,7 @@ class AddPostPage extends StatelessWidget {
                     child: Container(
                       height: 350,
                       decoration: BoxDecoration(
-                        color: const Color(0xffDBDADA),
+                        color: theme.canvasColor,
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       margin: const EdgeInsets.all(20),
@@ -70,38 +76,44 @@ class AddPostPage extends StatelessWidget {
               children: [
                 TextField(
                   controller: _name,
-                  cursorColor: Colors.black,
+                  cursorColor: theme.accentColor,
+                  style: TextStyle(color: theme.accentColor),
                   decoration: InputDecoration(
                     hintText: 'Name*',
+                    hintStyle: TextStyle(color: theme.accentColor),
                     errorText: provider.getNameValidate
                         ? 'Name Can\'t Be Empty'
                         : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      borderSide: const BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: theme.primaryColor),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: theme.accentColor),
                     ),
                   ),
                 ),
                 const SizedBox(height: 30),
                 TextField(
                   controller: _desc,
-                  cursorColor: Colors.black,
+                  cursorColor: theme.accentColor,
                   keyboardType: TextInputType.multiline,
                   maxLines: 8,
+                  style: TextStyle(color: theme.accentColor),
                   decoration: InputDecoration(
                     hintText: 'Description*',
+                    hintStyle: TextStyle(color: theme.accentColor),
                     errorText: provider.getDescValidate
                         ? 'Name Can\'t Be Empty'
                         : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      borderSide: const BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: theme.primaryColor),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: theme.accentColor),
                     ),
                   ),
                 ),

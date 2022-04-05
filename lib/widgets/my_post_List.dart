@@ -1,13 +1,18 @@
 import 'package:app/models/post.dart';
 import 'package:app/pages/detail_page.dart';
+import 'package:app/providers/theme.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
 
 class MyPostListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return FutureBuilder<Post>(
       future: getMyPost(),
       builder: (_, snapshot) {
@@ -15,12 +20,12 @@ class MyPostListWidget extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.data?.posts?.length == 0) {
           return Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              color: Color(0xffEEEEEE),
+              color: theme.canvasColor,
             ),
             child: const Center(
               child: Text('No data'),
@@ -29,12 +34,12 @@ class MyPostListWidget extends StatelessWidget {
         }
 
         return Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
-            color: Color(0xffEEEEEE),
+            color: theme.canvasColor,
           ),
           child: Container(
             margin: const EdgeInsets.only(left: 15, right: 15, top: 15),

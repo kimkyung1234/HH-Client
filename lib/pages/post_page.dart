@@ -1,11 +1,17 @@
+import 'package:app/providers/theme.dart';
 import 'package:app/widgets/common.dart';
 import 'package:app/widgets/list_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return Scaffold(
+      backgroundColor: theme.backgroundColor,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -62,6 +68,7 @@ class PostPage extends StatelessWidget {
               children: [
                 flexibleText(
                   text: 'Posts',
+                  textColor: theme.accentColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 43,
                   alignment: Alignment.centerLeft,
@@ -71,8 +78,9 @@ class PostPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 30),
                   child: IconButton(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.list,
+                      color: theme.accentColor,
                       size: 30,
                     ),
                   ),

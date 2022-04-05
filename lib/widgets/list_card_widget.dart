@@ -1,12 +1,17 @@
 import 'package:app/models/post.dart';
 import 'package:app/pages/detail_page.dart';
+import 'package:app/providers/theme.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/common.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ListCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return FutureBuilder<Post>(
       future: getList(),
       builder: (_, snapshot) {
@@ -50,12 +55,14 @@ class ListCardWidget extends StatelessWidget {
                         children: <Widget>[
                           flexibleText(
                             text: data?.strText ?? '',
+                            textColor: theme.accentColor,
                             fontWeight: FontWeight.bold,
                             alignment: Alignment.topLeft,
                             overflow: TextOverflow.ellipsis,
                           ),
                           flexibleText(
                             text: data?.strUser ?? '',
+                            textColor: theme.accentColor,
                             fontSize: 14,
                             alignment: Alignment.topLeft,
                           ),

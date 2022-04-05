@@ -1,5 +1,7 @@
+import 'package:app/providers/theme.dart';
 import 'package:app/widgets/common.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailPage extends StatelessWidget {
   final String strText;
@@ -16,15 +18,19 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
+
     return Scaffold(
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Detail',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: theme.accentColor),
         ),
-        leading: const BackButton(color: Colors.black),
+        leading: BackButton(color: theme.accentColor),
       ),
       body: ListView(
         children: [
@@ -38,6 +44,7 @@ class DetailPage extends StatelessWidget {
               children: [
                 flexibleText(
                   text: strText,
+                  textColor: theme.accentColor,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   alignment: Alignment.topLeft,
@@ -45,18 +52,21 @@ class DetailPage extends StatelessWidget {
                 flexibleText(
                   text: strUser,
                   fontSize: 15,
-                  textColor: const Color(0xff565555),
+                  textColor: theme.accentColor,
                   alignment: Alignment.topLeft,
                 ),
                 const SizedBox(height: 10),
                 flexibleText(
                   text: 'Description',
                   fontSize: 25,
-                  textColor: const Color(0xff3C3838),
+                  textColor: theme.accentColor,
                   fontWeight: FontWeight.bold,
                   alignment: Alignment.topLeft,
                 ),
-                Text(strDescription),
+                Text(
+                  strDescription,
+                  style: TextStyle(color: theme.accentColor),
+                ),
               ],
             ),
           ),

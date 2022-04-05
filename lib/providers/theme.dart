@@ -18,21 +18,19 @@ class ThemeChanger with ChangeNotifier {
 }
 
 final darkTheme = ThemeData(
-  primarySwatch: Colors.grey,
   primaryColor: Colors.black,
   brightness: Brightness.dark,
   backgroundColor: const Color(0xff222427),
   accentColor: Colors.white,
-  accentIconTheme: const IconThemeData(color: Colors.black),
-  dividerColor: Colors.black54,
+  canvasColor: const Color(0xff373B3E),
+  splashColor: const Color(0xff373B3E),
 );
 
 final lightTheme = ThemeData(
-  primarySwatch: Colors.grey,
   primaryColor: Colors.white,
   brightness: Brightness.light,
   backgroundColor: const Color(0xffFAF9F9),
   accentColor: Colors.black,
-  accentIconTheme: const IconThemeData(color: Colors.white),
-  dividerColor: Colors.white54,
+  canvasColor: const Color(0xffEEEEEE),
+  splashColor: Colors.black,
 );
