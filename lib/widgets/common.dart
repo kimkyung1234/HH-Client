@@ -66,3 +66,19 @@ Widget customCircularIndicator() {
     valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
   );
 }
+
+Widget settingMenu(
+    {required String text,
+    required Widget widget,
+    Color textColor = Colors.black}) {
+  return Padding(
+    padding: const EdgeInsets.all(20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        flexibleText(text: 'Dark mode', textColor: textColor),
+        widget,
+      ],
+    ),
+  );
+}
