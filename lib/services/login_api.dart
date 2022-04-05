@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
-signIn(
+void signIn(
     {required String id,
     required String password,
     required BuildContext context}) async {
@@ -33,7 +33,7 @@ signIn(
   }
 }
 
-signUp(
+void signUp(
     {required String user,
     required String email,
     required String password,

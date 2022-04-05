@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:app/providers/add_post.dart';
 import 'package:app/services/api.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart';
@@ -104,7 +105,8 @@ class AddPostPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                TextButton(
+                const SizedBox(height: 23),
+                CupertinoButton(
                   onPressed: () {
                     _name.text.isEmpty
                         ? provider.setNameValidate(true)
@@ -113,17 +115,22 @@ class AddPostPage extends StatelessWidget {
                         ? provider.setDescValidate(true)
                         : provider.setDescValidate(false);
 
-                    if (provider.getNameValidate == false ||
-                        provider.getDescValidate == false ||
-                        provider.getImage != null) {
+                    if (provider.getImage == null) {
+                      var snackBar =
+                          const SnackBar(content: Text('Please select image'));
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else if (provider.getNameValidate == false ||
+                        provider.getDescValidate == false) {
                       postRequest(
                         _name.text,
                         basename(provider.getImage!.path),
                         _desc.text,
                       );
-                    } else {}
+                    }
                   },
                   child: const Text('Submit'),
+                  color: Colors.black,
                 )
               ],
             ),
