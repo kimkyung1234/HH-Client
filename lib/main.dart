@@ -31,7 +31,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChanger>(context);
+    var sortMode = Provider.of<Pages>(context);
     themeMode.theme();
+    sortMode.sort();
 
     return MaterialApp(
       theme: ThemeData(

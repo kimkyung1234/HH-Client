@@ -5,6 +5,7 @@ import 'package:app/widgets/common.dart';
 import 'package:app/widgets/list_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PostPage extends StatelessWidget {
   @override
@@ -81,8 +82,10 @@ class PostPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 30),
                   child: provider.getGridSort
                       ? IconButton(
-                          onPressed: () {
+                          onPressed: () async {
                             provider.changeSort(false);
+                            final prefs = await SharedPreferences.getInstance();
+                            prefs.setBool('sort', false);
                           },
                           icon: Icon(
                             Icons.list,
@@ -91,8 +94,10 @@ class PostPage extends StatelessWidget {
                           ),
                         )
                       : IconButton(
-                          onPressed: () {
+                          onPressed: () async {
                             provider.changeSort(true);
+                            final prefs = await SharedPreferences.getInstance();
+                            prefs.setBool('sort', true);
                           },
                           icon: Icon(
                             Icons.space_dashboard_outlined,
