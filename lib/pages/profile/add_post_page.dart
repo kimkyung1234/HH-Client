@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:app/providers/add_post.dart';
-import 'package:app/providers/theme.dart';
+import 'package:app/providers/providers.dart';
 import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

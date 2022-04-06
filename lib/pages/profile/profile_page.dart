@@ -1,14 +1,8 @@
 import 'package:app/models/profile.dart';
-import 'package:app/pages/profile/add_post_page.dart';
-import 'package:app/pages/profile/edit_profile_page.dart';
-import 'package:app/providers/add_post.dart';
-import 'package:app/providers/edit_profile.dart';
-import 'package:app/providers/theme.dart';
+import 'package:app/pages/pages.dart';
+import 'package:app/providers/providers.dart';
 import 'package:app/services/api.dart';
-import 'package:app/widgets/common.dart';
-import 'package:app/widgets/my_post_List.dart';
-import 'package:app/widgets/popup_menu.dart';
-import 'package:app/widgets/profile_widget.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

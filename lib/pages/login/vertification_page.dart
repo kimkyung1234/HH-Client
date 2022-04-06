@@ -1,14 +1,8 @@
 import 'package:app/services/login_api.dart';
-import 'package:app/widgets/common.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 
-// class VertificationPage extends StatefulWidget {
-//   @override
-//   _VertificationPageState createState() => _VertificationPageState();
-// }
-
-// class _VertificationPageState extends State<VertificationPage> {
 class VertificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

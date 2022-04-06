@@ -1,7 +1,5 @@
-import 'package:app/pages/post_page.dart';
-import 'package:app/pages/profile/profile_page.dart';
-import 'package:app/providers/page.dart';
-import 'package:app/providers/theme.dart';
+import 'package:app/pages/pages.dart';
+import 'package:app/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

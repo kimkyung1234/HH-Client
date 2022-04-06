@@ -1,6 +1,6 @@
 import 'package:app/models/profile.dart';
-import 'package:app/providers/theme.dart';
-import 'package:app/widgets/common.dart';
+import 'package:app/providers/providers.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

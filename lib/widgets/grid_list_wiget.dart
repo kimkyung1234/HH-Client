@@ -1,6 +1,6 @@
 import 'package:app/models/post.dart';
-import 'package:app/pages/detail_page.dart';
-import 'package:app/widgets/common.dart';
+import 'package:app/pages/pages.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

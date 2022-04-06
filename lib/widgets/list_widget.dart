@@ -1,9 +1,9 @@
 import 'package:app/models/post.dart';
-import 'package:app/pages/detail_page.dart';
-import 'package:app/providers/theme.dart';
-import 'package:app/widgets/common.dart';
+import 'package:app/pages/pages.dart';
+import 'package:app/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'common.dart';
 
 class ListWidget extends StatelessWidget {
   final AsyncSnapshot<Post> snapshot;

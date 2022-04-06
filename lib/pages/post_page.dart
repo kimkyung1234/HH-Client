@@ -1,8 +1,6 @@
-import 'package:app/providers/page.dart';
-import 'package:app/providers/theme.dart';
+import 'package:app/providers/providers.dart';
 import 'package:app/services/api.dart';
-import 'package:app/widgets/common.dart';
-import 'package:app/widgets/list_card_widget.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

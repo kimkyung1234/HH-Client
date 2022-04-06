@@ -1,5 +1,4 @@
-import 'package:app/pages/home_page.dart';
-import 'package:app/pages/login/signup_page.dart';
+import 'package:app/pages/pages.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';

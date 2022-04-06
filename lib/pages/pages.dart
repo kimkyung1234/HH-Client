@@ -1,0 +1,10 @@
+export 'detail_page.dart';
+export 'home_page.dart';
+export 'post_page.dart';
+export 'setting_page.dart';
+export 'profile/add_post_page.dart';
+export 'profile/edit_profile_page.dart';
+export 'profile/profile_page.dart';
+export 'login/login_page.dart';
+export 'login/signup_page.dart';
+export 'login/vertification_page.dart';

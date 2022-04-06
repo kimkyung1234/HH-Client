@@ -1,10 +1,5 @@
-import 'package:app/pages/login/login_page.dart';
-import 'package:app/providers/add_post.dart';
-import 'package:app/providers/edit_profile.dart';
-import 'package:app/providers/login.dart';
-import 'package:app/providers/page.dart';
-import 'package:app/providers/theme.dart';
-import 'package:app/providers/user.dart';
+import 'package:app/pages/pages.dart';
+import 'package:app/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

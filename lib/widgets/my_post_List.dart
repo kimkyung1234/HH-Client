@@ -1,7 +1,7 @@
 import 'package:app/models/post.dart';
-import 'package:app/providers/theme.dart';
+import 'package:app/providers/providers.dart';
 import 'package:app/services/api.dart';
-import 'package:app/widgets/grid_list_wiget.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
