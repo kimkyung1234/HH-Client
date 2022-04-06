@@ -74,7 +74,7 @@ class PostPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 43,
                   alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.only(left: 20, top: 10, bottom: 5),
+                  padding: const EdgeInsets.only(left: 20, top: 10, bottom: 1),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),

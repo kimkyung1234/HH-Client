@@ -37,41 +37,47 @@ class ListWidget extends StatelessWidget {
               ),
             );
           },
-          child: Row(
-            children: [
-              Container(
-                height: 130,
-                width: 130,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: carryImageWidget(
-                    url: data?.strImage ?? '',
-                    boxFit: BoxFit.cover,
+          child: Container(
+            decoration: BoxDecoration(
+              color: theme.canvasColor,
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  height: 130,
+                  width: 130,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: carryImageWidget(
+                      url: data?.strImage ?? '',
+                      boxFit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    flexibleText(
-                      text: data?.strText ?? '',
-                      textColor: theme.accentColor,
-                      fontWeight: FontWeight.bold,
-                      alignment: Alignment.topLeft,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    flexibleText(
-                      text: data?.strUser ?? '',
-                      textColor: theme.accentColor,
-                      fontSize: 14,
-                      alignment: Alignment.topLeft,
-                    ),
-                  ],
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      flexibleText(
+                        text: data?.strText ?? '',
+                        textColor: theme.accentColor,
+                        fontWeight: FontWeight.bold,
+                        alignment: Alignment.topLeft,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      flexibleText(
+                        text: data?.strUser ?? '',
+                        textColor: theme.accentColor,
+                        fontSize: 14,
+                        alignment: Alignment.topLeft,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

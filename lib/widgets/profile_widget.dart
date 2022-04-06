@@ -17,6 +17,10 @@ class ProfileWidget extends StatelessWidget {
     var theme = themeMode.getThemeData;
 
     return Container(
+      decoration: BoxDecoration(
+        color: theme.canvasColor,
+        borderRadius: BorderRadius.circular(20.0),
+      ),
       margin: const EdgeInsets.all(20),
       child: Row(
         children: [

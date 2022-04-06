@@ -48,6 +48,7 @@ class ProfilePage extends StatelessWidget {
           return Column(
             children: [
               ProfileWidget(data: data!),
+              const SizedBox(height: 20),
               data.strDescription == ''
                   ? TextButton(
                       onPressed: () {

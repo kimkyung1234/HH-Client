@@ -23,7 +23,7 @@ Widget carryImageWidget(
         margin: const EdgeInsets.fromLTRB(0, 50, 0, 50),
         child: Center(
           child: CircularProgressIndicator(
-            valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
+            valueColor: const AlwaysStoppedAnimation<Color>(Colors.grey),
             value: loadingProgress.expectedTotalBytes != null
                 ? loadingProgress.cumulativeBytesLoaded /
                     loadingProgress.expectedTotalBytes!
@@ -63,15 +63,17 @@ Widget flexibleText({
 
 Widget customCircularIndicator() {
   return const CircularProgressIndicator(
-    valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+    valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
   );
 }
 
-Widget settingMenu(
-    {required String text,
-    required Widget widget,
-    Color textColor = Colors.black,
-    VoidCallback? onTap}) {
+Widget settingMenu({
+  required String text,
+  required Widget widget,
+  required Color textColor,
+  String hintText = '',
+  VoidCallback? onTap,
+}) {
   return GestureDetector(
     onTap: onTap,
     child: Padding(
@@ -79,8 +81,22 @@ Widget settingMenu(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          flexibleText(text: text, textColor: textColor),
-          widget,
+          flexibleText(
+            text: text,
+            textColor: textColor,
+            fontWeight: FontWeight.w600,
+          ),
+          Row(
+            children: [
+              flexibleText(
+                text: hintText,
+                fontSize: 17,
+                textColor: Colors.grey,
+                padding: const EdgeInsets.only(right: 15),
+              ),
+              widget,
+            ],
+          ),
         ],
       ),
     ),

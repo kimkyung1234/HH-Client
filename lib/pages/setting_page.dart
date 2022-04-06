@@ -27,6 +27,7 @@ class SettingPage extends StatelessWidget {
         children: [
           settingMenu(
             text: 'Dark mode',
+            hintText: themeMode.getThemeDark ? 'On' : 'Off',
             textColor: theme.accentColor,
             widget: CupertinoSwitch(
               value: themeMode.getThemeDark,
@@ -47,6 +48,24 @@ class SettingPage extends StatelessWidget {
           settingMenu(
             text: 'Change password',
             textColor: theme.accentColor,
+            widget: Icon(
+              Icons.arrow_forward_ios,
+              color: theme.accentColor,
+            ),
+            onTap: () {},
+          ),
+          settingMenu(
+            text: 'About',
+            textColor: theme.accentColor,
+            widget: Icon(
+              Icons.arrow_forward_ios,
+              color: theme.accentColor,
+            ),
+            onTap: () {},
+          ),
+          settingMenu(
+            text: 'Logout',
+            textColor: Colors.redAccent,
             widget: Icon(
               Icons.arrow_forward_ios,
               color: theme.accentColor,
