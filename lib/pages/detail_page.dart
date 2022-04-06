@@ -67,6 +67,7 @@ class DetailPage extends StatelessWidget {
                   strDescription,
                   style: TextStyle(color: theme.accentColor),
                 ),
+                const SizedBox(height: 200),
               ],
             ),
           ),

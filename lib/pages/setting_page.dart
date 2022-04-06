@@ -3,6 +3,7 @@ import 'package:app/widgets/common.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingPage extends StatelessWidget {
   @override
@@ -29,10 +30,17 @@ class SettingPage extends StatelessWidget {
             textColor: theme.accentColor,
             widget: CupertinoSwitch(
               value: themeMode.getThemeDark,
-              onChanged: (value) {
+              onChanged: (value) async {
                 themeMode.getThemeDark
                     ? themeMode.setLight()
                     : themeMode.setDark();
+
+                SharedPreferences mSharedPrefs =
+                    await SharedPreferences.getInstance();
+                mSharedPrefs.setBool('themeMode', value);
+
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setBool('theme', value);
               },
             ),
           ),

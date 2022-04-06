@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeChanger with ChangeNotifier {
   bool _themeDark = false;
@@ -12,6 +13,11 @@ class ThemeChanger with ChangeNotifier {
   void setDark() {
     _themeDark = true;
     notifyListeners();
+  }
+
+  Future<void> theme() async {
+    final prefs = await SharedPreferences.getInstance();
+    _themeDark = prefs.getBool('theme') ?? false;
   }
 
   ThemeData get getThemeData => !_themeDark ? lightTheme : darkTheme;

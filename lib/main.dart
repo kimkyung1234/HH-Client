@@ -31,6 +31,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChanger>(context);
+    themeMode.theme();
+
     return MaterialApp(
       theme: ThemeData(
           appBarTheme: AppBarTheme(
