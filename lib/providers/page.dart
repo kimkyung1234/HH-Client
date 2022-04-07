@@ -1,4 +1,3 @@
-import 'package:app/models/post.dart';
 import 'package:app/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,6 +30,9 @@ class Pages with ChangeNotifier {
   List<dynamic> _postList = [];
   List<dynamic> get getPostList => _postList;
 
+  int _index = 1;
+  int get getIndex => _index;
+
   bool _isFirstLoadRunning = true;
 
   Future<void> firstLoad() async {
@@ -39,13 +41,15 @@ class Pages with ChangeNotifier {
       _postList = a.posts!;
 
       _isFirstLoadRunning = false;
+      _index++;
     }
   }
 
   Future<void> loadMore() async {
     if (_isFirstLoadRunning == false) {
-      var a = await getPost(1);
+      var a = await getPost(_index);
       _postList.addAll(a.posts!);
+      _index++;
       notifyListeners();
     }
   }

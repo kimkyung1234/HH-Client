@@ -1,21 +1,12 @@
-import 'package:app/models/post.dart';
 import 'package:app/providers/providers.dart';
 import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ListCardWidget extends StatelessWidget {
-  final Future<Post> future;
-  const ListCardWidget({
-    Key? key,
-    required this.future,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Pages>(context);
-    var themeMode = Provider.of<ThemeChanger>(context);
-    var theme = themeMode.getThemeData;
 
     return FutureBuilder(
       future: provider.firstLoad(),
