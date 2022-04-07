@@ -1,25 +1,32 @@
-import 'package:app/models/post.dart';
 import 'package:app/pages/pages.dart';
+import 'package:app/providers/providers.dart';
 import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
 
 class GridListWidget extends StatelessWidget {
-  final AsyncSnapshot<Post> snapshot;
-  const GridListWidget({
-    Key? key,
-    required this.snapshot,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Pages>(context);
+    var postLength = provider.getPostList.length;
+
     return MasonryGridView.count(
+      key: const PageStorageKey<String>('controllerA'),
       crossAxisCount: 2,
       crossAxisSpacing: 10,
       mainAxisSpacing: 10,
-      itemCount: snapshot.data!.posts!.length,
+      itemCount: postLength,
       itemBuilder: (context, index) {
-        var data = snapshot.data!.posts![index];
+        final data = provider.getPostList[index];
+        if (index == postLength - 1) {
+          return TextButton(
+            onPressed: () {
+              provider.loadMore();
+            },
+            child: const Text('more'),
+          );
+        }
         return GestureDetector(
           onTap: () {
             Navigator.push(

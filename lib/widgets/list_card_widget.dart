@@ -17,22 +17,20 @@ class ListCardWidget extends StatelessWidget {
     var themeMode = Provider.of<ThemeChanger>(context);
     var theme = themeMode.getThemeData;
 
-    return FutureBuilder<Post>(
-      future: future,
+    return FutureBuilder(
+      future: provider.firstLoad(),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.data?.posts?.length == 0) {
+        } else if (provider.getPostList.length == 0) {
           return const Center(child: Text('No data'));
         }
         return provider.getGridSort
             ? Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
-                child: GridListWidget(snapshot: snapshot),
+                child: GridListWidget(),
               )
-            : ListWidget(
-                snapshot: snapshot,
-              );
+            : ListWidget();
       },
     );
   }

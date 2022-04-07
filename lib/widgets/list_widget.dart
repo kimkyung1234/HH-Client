@@ -1,4 +1,3 @@
-import 'package:app/models/post.dart';
 import 'package:app/pages/pages.dart';
 import 'package:app/providers/providers.dart';
 import 'package:flutter/material.dart';
@@ -6,33 +5,39 @@ import 'package:provider/provider.dart';
 import 'common.dart';
 
 class ListWidget extends StatelessWidget {
-  final AsyncSnapshot<Post> snapshot;
-  const ListWidget({
-    Key? key,
-    required this.snapshot,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChanger>(context);
     var theme = themeMode.getThemeData;
 
+    var provider = Provider.of<Pages>(context);
+    var postLength = provider.getPostList.length;
+
     return ListView.separated(
+      key: const PageStorageKey<String>('controllerA'),
       separatorBuilder: (context, index) => const SizedBox(height: 14),
       padding: const EdgeInsets.all(18),
-      itemCount: snapshot.data?.posts?.length ?? 0,
+      itemCount: postLength,
       itemBuilder: (_, index) {
-        final data = snapshot.data?.posts?[index];
+        final data = provider.getPostList[index];
+        if (index == postLength - 1) {
+          return TextButton(
+            onPressed: () {
+              provider.loadMore();
+            },
+            child: const Text('more'),
+          );
+        }
         return GestureDetector(
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => DetailPage(
-                  strText: data?.strText ?? '',
-                  strImage: data?.strImage ?? '',
-                  strUser: data?.strUser ?? '',
-                  strDescription: data?.strDescription ?? '',
+                  strText: data.strText ?? '',
+                  strImage: data.strImage ?? '',
+                  strUser: data.strUser ?? '',
+                  strDescription: data.strDescription ?? '',
                 ),
               ),
             );
@@ -50,7 +55,7 @@ class ListWidget extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: carryImageWidget(
-                      url: data?.strImage ?? '',
+                      url: data.strImage ?? '',
                       boxFit: BoxFit.cover,
                     ),
                   ),
@@ -61,14 +66,14 @@ class ListWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       flexibleText(
-                        text: data?.strText ?? '',
+                        text: data.strText ?? '',
                         textColor: theme.accentColor,
                         fontWeight: FontWeight.bold,
                         alignment: Alignment.topLeft,
                         overflow: TextOverflow.ellipsis,
                       ),
                       flexibleText(
-                        text: data?.strUser ?? '',
+                        text: data.strUser ?? '',
                         textColor: theme.accentColor,
                         fontSize: 14,
                         alignment: Alignment.topLeft,

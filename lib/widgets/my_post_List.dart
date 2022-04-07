@@ -1,8 +1,10 @@
 import 'package:app/models/post.dart';
+import 'package:app/pages/detail_page.dart';
 import 'package:app/providers/providers.dart';
 import 'package:app/services/api.dart';
 import 'package:app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class MyPostListWidget extends StatelessWidget {
@@ -43,7 +45,42 @@ class MyPostListWidget extends StatelessWidget {
           ),
           child: Container(
             margin: const EdgeInsets.only(left: 15, right: 15, top: 15),
-            child: GridListWidget(snapshot: snapshot),
+            child: MasonryGridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              itemCount: snapshot.data!.posts!.length,
+              itemBuilder: (context, index) {
+                var data = snapshot.data!.posts![index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                          strText: data.strText ?? '',
+                          strImage: data.strImage ?? '',
+                          strUser: data.strUser ?? '',
+                          strDescription: data.strDescription ?? '',
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      child: carryImageWidget(
+                        url: data.strImage ?? '',
+                        boxFit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         );
       },
