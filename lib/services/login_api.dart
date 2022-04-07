@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
+String baseUrl = 'http://{BASE_URL}';
+
 void signIn(
     {required String id,
     required String password,
@@ -14,7 +16,7 @@ void signIn(
   var data = jsonEncode({'id': id, 'password': password});
   var jsonResponse;
   var response = await post(
-    Uri.parse(''),
+    Uri.parse(baseUrl + '/login'),
     headers: {'Content-type': 'application/json'},
     body: data,
   );
@@ -38,11 +40,9 @@ void signUp(
     required String email,
     required String password,
     required BuildContext context}) async {
-  String url = '';
-
   var jsonResponse;
   Response response = await post(
-    Uri.parse(url),
+    Uri.parse(baseUrl + '/join'),
     headers: {'Content-type': 'application/json'},
     body: jsonEncode({'user_name': user, 'id': email, 'password': password}),
   );
@@ -71,11 +71,9 @@ void signUp(
 
 void postEmailCode(
     {required String emailCode, required BuildContext context}) async {
-  String url = '';
-
   var jsonResponse;
   Response response = await post(
-    Uri.parse(url),
+    Uri.parse(baseUrl + '/email'),
     headers: {HttpHeaders.contentTypeHeader: 'application/json'},
     body: jsonEncode({'email_code': emailCode}),
   );

@@ -79,6 +79,8 @@ class EditProfilePage extends StatelessWidget {
                     cursorColor: theme.accentColor,
                     style: TextStyle(color: theme.accentColor),
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: theme.canvasColor,
                       hintText: 'Name*',
                       hintStyle: TextStyle(color: theme.accentColor),
                       errorText: provider.getNameValidate
@@ -110,6 +112,8 @@ class EditProfilePage extends StatelessWidget {
                   maxLines: 3,
                   style: TextStyle(color: theme.accentColor),
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: theme.canvasColor,
                     hintText: 'Description',
                     hintStyle: TextStyle(color: theme.accentColor),
                     border: OutlineInputBorder(

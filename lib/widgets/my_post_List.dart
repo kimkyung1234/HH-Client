@@ -8,11 +8,13 @@ import 'package:provider/provider.dart';
 class MyPostListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var userName = Provider.of<UserName>(context);
     var themeMode = Provider.of<ThemeChanger>(context);
     var theme = themeMode.getThemeData;
 
     return FutureBuilder<Post>(
-      future: getMyPost(),
+      // future: getMyPost(userName.getUserName ?? ''),
+      future: getMyPost('오어진'),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());

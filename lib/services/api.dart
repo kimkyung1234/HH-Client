@@ -7,21 +7,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
+String baseUrl = 'http://{BASE_URL}';
+
 Future<String> _loadAddressAsset(String location) async {
   return await rootBundle.loadString(location);
 }
 
-Future<Post> getList() async {
+Future<Post> getPost(int index) async {
+  // final response = await get(
+  //     Uri.parse(baseUrl + '/posts?page=' + index.toString() + '&size=5'));
+  // if (response.statusCode == 200) {
+  //   return Post.fromJson(jsonDecode(response.body));
+  // } else {
+  //   throw Exception("Error loading");
+  // }
   final response = await _loadAddressAsset('assets/posts.json');
   return Post.fromJson(jsonDecode(response));
 }
 
-Future<Profile> getProfile() async {
+Future<Profile> getProfile(String name) async {
+  // final response = await get(Uri.parse(baseUrl + name + '/profile'));
+  // if (response.statusCode == 200) {
+  //   return Profile.fromJson(jsonDecode(response.body));
+  // } else {
+  //   throw Exception("Error loading");
+  // }
   final response = await _loadAddressAsset('assets/profile.json');
   return Profile.fromJson(jsonDecode(response));
 }
 
-Future<Post> getMyPost() async {
+Future<Post> getMyPost(String name) async {
+  // final response = await get(Uri.parse(baseUrl + name + '/posts'));
+  // if (response.statusCode == 200) {
+  //   return Post.fromJson(jsonDecode(response.body));
+  // } else {
+  //   throw Exception("Error loading");
+  // }
   final response = await _loadAddressAsset('assets/my_post.json');
   return Post.fromJson(jsonDecode(response));
 }
@@ -31,10 +52,8 @@ void postRequest(
     required String image,
     required String description,
     required BuildContext context}) async {
-  String url = '';
-
   Response response = await post(
-    Uri.parse(url),
+    Uri.parse(baseUrl + '/posts'),
     headers: {
       HttpHeaders.contentTypeHeader: 'application/json',
     },
@@ -58,10 +77,8 @@ void postEditProfile(
     required String image,
     required String description,
     required BuildContext context}) async {
-  String url = '';
-
   Response response = await post(
-    Uri.parse(url),
+    Uri.parse(baseUrl + name + '/profile'),
     headers: {
       HttpHeaders.contentTypeHeader: 'application/json',
     },

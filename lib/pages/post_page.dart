@@ -107,7 +107,7 @@ class PostPage extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: ListCardWidget(future: getList()),
+              child: ListCardWidget(future: getPost(1)),
             ),
           ],
         ),

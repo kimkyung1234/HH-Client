@@ -10,6 +10,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AddPost>(context);
+    var userName = Provider.of<UserName>(context);
     var editProfile = Provider.of<EditProfile>(context);
     var themeMode = Provider.of<ThemeChanger>(context);
     var theme = themeMode.getThemeData;
@@ -39,7 +40,8 @@ class ProfilePage extends StatelessWidget {
         actions: [PopupMenu()],
       ),
       body: FutureBuilder<Profile>(
-        future: getProfile(),
+        // future: getProfile(userName.getUserName ?? ''),
+        future: getProfile('오어진'),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
