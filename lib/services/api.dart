@@ -48,9 +48,9 @@ Future<Post> getMyPost(String name) async {
 }
 
 void postRequest(
-    {required String text,
+    {required String title,
     required String image,
-    required String description,
+    required String content,
     required BuildContext context}) async {
   Response response = await post(
     Uri.parse(baseUrl + '/posts'),
@@ -58,9 +58,9 @@ void postRequest(
       HttpHeaders.contentTypeHeader: 'application/json',
     },
     body: jsonEncode({
-      'strText': text,
+      'strTitle': title,
       'strImage': image,
-      'strDescription': description,
+      'strContent': content,
     }),
   );
 

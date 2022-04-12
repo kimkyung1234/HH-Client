@@ -4,8 +4,8 @@ import 'package:app/providers/providers.dart';
 import 'package:app/services/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 
 class AddPostPage extends StatelessWidget {
   final _name = TextEditingController();
@@ -138,9 +138,9 @@ class AddPostPage extends StatelessWidget {
                     } else if (provider.getNameValidate == false ||
                         provider.getDescValidate == false) {
                       postRequest(
-                          text: _name.text,
+                          title: _name.text,
                           image: basename(provider.getImage!.path),
-                          description: _desc.text,
+                          content: _desc.text,
                           context: context);
                     }
                   },

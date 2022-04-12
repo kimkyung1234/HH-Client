@@ -2,6 +2,7 @@ import 'package:app/pages/pages.dart';
 import 'package:app/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'common.dart';
 
 class ListWidget extends StatelessWidget {
@@ -34,10 +35,10 @@ class ListWidget extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => DetailPage(
-                  strText: data.strText ?? '',
+                  strText: data.strTitle ?? '',
                   strImage: data.strImage ?? '',
                   strUser: data.strUser ?? '',
-                  strDescription: data.strDescription ?? '',
+                  strDescription: data.strContent ?? '',
                 ),
               ),
             );
@@ -66,7 +67,7 @@ class ListWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       flexibleText(
-                        text: data.strText ?? '',
+                        text: data.strTitle ?? '',
                         textColor: theme.accentColor,
                         fontWeight: FontWeight.bold,
                         alignment: Alignment.topLeft,

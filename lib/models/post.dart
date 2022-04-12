@@ -15,26 +15,26 @@ class Post {
 
 class Value {
   Value({
-    this.strDescription,
-    this.strText,
+    this.strContent,
+    this.strTitle,
     this.strImage,
     this.strUser,
   });
-  String? strDescription;
-  String? strText;
+  String? strContent;
+  String? strTitle;
   String? strImage;
   String? strUser;
 
   factory Value.fromJson(Map<String, dynamic> json) => Value(
-        strDescription: json['strDescription'],
-        strText: json['strText'],
+        strContent: json['strContent'],
+        strTitle: json['strTitle'],
         strImage: json['strImage'],
         strUser: json['strUser'],
       );
 
   Map<String, dynamic> toJson() => {
-        'strDescription': strDescription,
-        'strCategory': strText,
+        'strContent': strContent,
+        'strTitle': strTitle,
         'strImage': strImage,
         'strUser': strUser,
       };

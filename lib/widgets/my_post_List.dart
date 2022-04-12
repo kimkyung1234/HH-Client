@@ -58,10 +58,10 @@ class MyPostListWidget extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => DetailPage(
-                          strText: data.strText ?? '',
+                          strText: data.strTitle ?? '',
                           strImage: data.strImage ?? '',
                           strUser: data.strUser ?? '',
-                          strDescription: data.strDescription ?? '',
+                          strDescription: data.strContent ?? '',
                         ),
                       ),
                     );
