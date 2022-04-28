@@ -1,6 +1,7 @@
 import 'package:app/pages/pages.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/services/api.dart';
+import 'package:app/services/login_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -92,17 +93,10 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   CupertinoButton(
                     onPressed: () {
-                      // signIn(
-                      //   id: idText.text,
-                      //   password: passwordText.text,
-                      //   context: context,
-                      // );
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
+                      signIn(
+                        id: idText.text,
+                        password: passwordText.text,
+                        context: context,
                       );
                     },
                     child: const Text('Sign In'),
@@ -110,13 +104,19 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      loginHelper.reset();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignupPage(),
-                        ),
+                      signUp(
+                        context: context,
+                        email: 'test',
+                        password: 'test',
+                        user: 'test',
                       );
+                      // loginHelper.reset();
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => SignupPage(),
+                      //   ),
+                      // );
                     },
                     child: const Text('Sign Up'),
                   ),

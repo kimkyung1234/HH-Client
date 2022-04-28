@@ -32,43 +32,37 @@ class AddPostPage extends StatelessWidget {
       body: ListView(
         children: [
           Center(
+              child: GestureDetector(
+            onTap: () {
+              provider.setImage();
+            },
             child: provider.getImage == null
-                ? GestureDetector(
-                    onTap: () {
-                      provider.setImage();
-                    },
-                    child: Container(
-                      height: 350,
-                      decoration: BoxDecoration(
-                        color: theme.canvasColor,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      margin: const EdgeInsets.all(20),
-                      child: const Center(
-                        child: Icon(
-                          Icons.add_photo_alternate,
-                          color: Color(0xff949494),
-                        ),
+                ? Container(
+                    height: 350,
+                    decoration: BoxDecoration(
+                      color: theme.canvasColor,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    margin: const EdgeInsets.all(20),
+                    child: const Center(
+                      child: Icon(
+                        Icons.add_photo_alternate,
+                        color: Color(0xff949494),
                       ),
                     ),
                   )
-                : GestureDetector(
-                    onTap: () {
-                      provider.setImage();
-                    },
-                    child: Container(
-                      height: 350,
-                      margin: const EdgeInsets.all(20),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.file(
-                          File(provider.getImage!.path),
-                          fit: BoxFit.cover,
-                        ),
+                : Container(
+                    height: 350,
+                    margin: const EdgeInsets.all(20),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.file(
+                        File(provider.getImage!.path),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-          ),
+          )),
           Container(
             margin: const EdgeInsets.all(20),
             child: Column(
@@ -139,7 +133,7 @@ class AddPostPage extends StatelessWidget {
                         provider.getDescValidate == false) {
                       postRequest(
                           title: _name.text,
-                          image: basename(provider.getImage!.path),
+                          image: provider.getImage!,
                           content: _desc.text,
                           context: context);
                     }

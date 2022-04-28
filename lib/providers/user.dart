@@ -6,6 +6,5 @@ class UserName with ChangeNotifier {
 
   void setUserName(String userName) {
     _userName = userName;
-    notifyListeners();
   }
 }
