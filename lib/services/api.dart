@@ -64,18 +64,19 @@ Future<void> postRequest(
     required String content,
     required BuildContext context}) async {
   Uint8List bytes = await image.readAsBytes();
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
   Response response = await post(
     Uri.parse(baseUrl + '/posts'),
-    // headers: {
-    //   HttpHeaders.contentTypeHeader: 'application/json',
-    // },
-    headers: {'Content-type': 'application/json'},
-    body: jsonEncode({
+    headers: {
+      HttpHeaders.authorizationHeader:
+          sharedPreferences.getString('accessToken')!,
+    },
+    body: {
       'strTitle': title,
       'image': bytes,
       'strContent': content,
-    }),
+    },
   );
 
   if (response.statusCode == 200) {
@@ -88,19 +89,23 @@ Future<void> postRequest(
 
 Future<void> postEditProfile(
     {required String name,
-    required String image,
+    required PickedFile image,
     required String description,
     required BuildContext context}) async {
+  Uint8List bytes = await image.readAsBytes();
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
   Response response = await post(
     Uri.parse(baseUrl + name + '/profile'),
     headers: {
-      HttpHeaders.contentTypeHeader: 'application/json',
+      HttpHeaders.authorizationHeader:
+          sharedPreferences.getString('accessToken')!,
     },
-    body: jsonEncode({
+    body: {
       'strName': name,
-      'strImage': image,
+      'strImage': bytes,
       'strDescription': description,
-    }),
+    },
   );
 
   if (response.statusCode == 200) {

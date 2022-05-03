@@ -132,18 +132,18 @@ class SignupPage extends StatelessWidget {
                     if (provider.getUserValidate == false ||
                         provider.getEmailValidate == false ||
                         provider.getPasswordValidate == false) {
-                      // signUp(
-                      //   user: _user.text,
-                      //   email: _email.text,
-                      //   password: _password.text,
-                      //   context: context,
-                      // );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VertificationPage(),
-                        ),
+                      signUp(
+                        user: _user.text,
+                        email: _email.text,
+                        password: _password.text,
+                        context: context,
                       );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => VertificationPage(),
+                      //   ),
+                      // );
                     } else {
                       var snackBar = const SnackBar(
                           content: Text('Wrong text please check'));

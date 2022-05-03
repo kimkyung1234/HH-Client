@@ -133,21 +133,21 @@ class EditProfilePage extends StatelessWidget {
                         ? provider.setNameValidate(true)
                         : provider.setNameValidate(false);
 
-                    if (provider.getImage == null) {
-                      postEditProfile(
-                        name: _name.text,
-                        image: '',
-                        description: _desc.text,
-                        context: context,
-                      );
-                    } else if (provider.getNameValidate == false) {
-                      postEditProfile(
-                        name: _name.text,
-                        image: basename(provider.getImage!.path),
-                        description: _desc.text,
-                        context: context,
-                      );
-                    }
+                    // if (provider.getImage == null) {
+                    //   postEditProfile(
+                    //     name: _name.text,
+                    //     image: '',
+                    //     description: _desc.text,
+                    //     context: context,
+                    //   );
+                    // } else if (provider.getNameValidate == false) {
+                    postEditProfile(
+                      name: _name.text,
+                      image: provider.getImage!,
+                      description: _desc.text,
+                      context: context,
+                    );
+                    // }
                   },
                   child: const Text('Save'),
                   color: Colors.black,

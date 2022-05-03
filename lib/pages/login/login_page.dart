@@ -104,19 +104,19 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      signUp(
-                        context: context,
-                        email: 'test',
-                        password: 'test',
-                        user: 'test',
-                      );
-                      // loginHelper.reset();
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => SignupPage(),
-                      //   ),
+                      // signUp(
+                      //   context: context,
+                      //   email: 'test',
+                      //   password: 'test',
+                      //   user: 'test',
                       // );
+                      loginHelper.reset();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignupPage(),
+                        ),
+                      );
                     },
                     child: const Text('Sign Up'),
                   ),
