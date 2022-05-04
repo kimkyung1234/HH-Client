@@ -1,6 +1,7 @@
 import 'package:app/pages/pages.dart';
 import 'package:app/providers/providers.dart';
 import 'package:app/services/login_api.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,13 @@ class SignupPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 100),
+                // FieldWidget(
+                //   controller: _user,
+                //   errorText: provider.getUserValidate
+                //       ? 'User Name Can\'t Be Empty'
+                //       : '',
+                //   labelText: 'User Name*',
+                // ),
                 TextField(
                   controller: _user,
                   cursorColor: Colors.black,

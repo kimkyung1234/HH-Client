@@ -2,6 +2,7 @@ import 'package:app/pages/pages.dart';
 import 'package:app/providers/login.dart';
 import 'package:app/services/api.dart';
 import 'package:app/services/login_api.dart';
+import 'package:app/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,10 @@ class LoginPage extends StatelessWidget {
               padding: const EdgeInsets.all(40),
               child: Column(
                 children: [
+                  // FieldWidget(
+                  //   controller: idText,
+                  //   labelText: 'Email',
+                  // ),
                   TextField(
                     controller: idText,
                     cursorColor: Colors.black,
@@ -51,6 +56,29 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  // FieldWidget(
+                  //   controller: passwordText,
+                  //   labelText: 'Password',
+                  //   suffixIcon: provider.getVisible == true
+                  //       ? IconButton(
+                  //           icon: const Icon(
+                  //             Icons.visibility_off,
+                  //             color: Colors.black,
+                  //           ),
+                  //           onPressed: () {
+                  //             provider.setvisible();
+                  //           },
+                  //         )
+                  //       : IconButton(
+                  //           icon: const Icon(
+                  //             Icons.visibility,
+                  //             color: Colors.black,
+                  //           ),
+                  //           onPressed: () {
+                  //             provider.setInvisible();
+                  //           },
+                  //         ),
+                  // ),
                   TextField(
                     controller: passwordText,
                     cursorColor: Colors.black,
