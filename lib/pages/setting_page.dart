@@ -1,3 +1,4 @@
+import 'package:app/pages/pages.dart';
 import 'package:app/providers/providers.dart';
 import 'package:app/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -70,7 +71,19 @@ class SettingPage extends StatelessWidget {
               Icons.arrow_forward_ios,
               color: theme.accentColor,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ),
+              );
+
+              var snackBar = const SnackBar(content: Text('Your logged out'));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
           ),
         ],
       ),
