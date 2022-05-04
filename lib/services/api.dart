@@ -30,18 +30,18 @@ Future<Post> getPost(int index) async {
 
 Future<Profile> getProfile() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  print(sharedPreferences.getString('accessToken'));
 
   final response = await get(
-    Uri.parse(baseUrl + '/profile'),
+    Uri.parse(baseUrl + '/user/profile'),
     headers: {
-      HttpHeaders.authorizationHeader:
-          sharedPreferences.getString('accessToken')!
+      'Authorization': 'Bearer ' + sharedPreferences.getString('accessToken')!
     },
   );
   if (response.statusCode == 200) {
     return Profile.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception("Error loading");
+    throw Exception('Error loading');
   }
   // final response = await _loadAddressAsset('assets/profile.json');
   // return Profile.fromJson(jsonDecode(response));
@@ -69,8 +69,7 @@ Future<void> postRequest(
   Response response = await post(
     Uri.parse(baseUrl + '/posts'),
     headers: {
-      HttpHeaders.authorizationHeader:
-          sharedPreferences.getString('accessToken')!,
+      'Authorization': 'Bearer ' + sharedPreferences.getString('accessToken')!
     },
     body: {
       'strTitle': title,

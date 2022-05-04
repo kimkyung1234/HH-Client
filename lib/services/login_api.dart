@@ -33,7 +33,7 @@ Future<void> signIn(
       sharedPreferences.setString('accessToken', jsonResponse['accessToken']);
 
       String userName = jsonResponse['userName'];
-      print(userName);
+      // print(userName);
       provider.setUserName(userName);
 
       Navigator.pop(context);
@@ -56,6 +56,8 @@ Future<void> signUp(
     required String password,
     required BuildContext context}) async {
   var jsonResponse;
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
   Response response = await post(
     Uri.parse(baseUrl + '/user/join'),
     headers: {'Content-type': 'application/json'},
@@ -67,21 +69,24 @@ Future<void> signUp(
       'zipCode': 1
     }),
   );
+  var provider = Provider.of<UserName>(context, listen: false);
 
   if (response.statusCode == 201) {
-    // jsonResponse = json.decode(response.body);
-    // if (jsonResponse != null) {
-    // String userName = jsonResponse['user_name'];
-    // provider.setUserName(userName);
+    jsonResponse = json.decode(response.body);
+    if (jsonResponse != null) {
+      sharedPreferences.setString('accessToken', jsonResponse['accessToken']);
 
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ),
-    );
-    // }
+      String userName = jsonResponse['userName'];
+      provider.setUserName(userName);
+
+      Navigator.pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    }
   } else {
     var snackBar = const SnackBar(content: Text('Something Wrong'));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);

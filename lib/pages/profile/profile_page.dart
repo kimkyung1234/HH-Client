@@ -43,7 +43,8 @@ class ProfilePage extends StatelessWidget {
         // future: getProfile(userName.getUserName ?? ''),
         future: getProfile(),
         builder: (_, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.waiting ||
+              snapshot.data == null) {
             return const Center(child: CircularProgressIndicator());
           }
           var data = snapshot.data;

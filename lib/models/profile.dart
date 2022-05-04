@@ -11,10 +11,10 @@ class Profile {
   String? strEmail;
 
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
-        strName: json['strName'],
-        strImage: json['strImage'],
-        strDescription: json['strDescription'],
-        strEmail: json['strEmail'],
+        strName: json['userName'],
+        strImage: json['imageUrl'],
+        strDescription: json['description'],
+        strEmail: json['email'],
       );
 
   Map<String, dynamic> toJson() => {
