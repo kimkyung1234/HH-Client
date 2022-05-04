@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Widget FieldWidget({
   required String labelText,
   required TextEditingController controller,
-  String errorText = '',
+  String? errorText,
   Widget? suffixIcon,
 }) {
   return TextField(

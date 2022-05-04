@@ -29,98 +29,28 @@ class SignupPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 100),
-                // FieldWidget(
-                //   controller: _user,
-                //   errorText: provider.getUserValidate
-                //       ? 'User Name Can\'t Be Empty'
-                //       : '',
-                //   labelText: 'User Name*',
-                // ),
-                TextField(
+                FieldWidget(
                   controller: _user,
-                  cursorColor: Colors.black,
-                  decoration: InputDecoration(
-                    labelText: 'User Name*',
-                    errorText: provider.getUserValidate
-                        ? 'User Name Can\'t Be Empty'
-                        : null,
-                    labelStyle: const TextStyle(color: Colors.black),
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: const BorderSide(color: Colors.black),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.black, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
+                  errorText: provider.getUserValidate
+                      ? 'User Name Can\'t Be Empty'
+                      : null,
+                  labelText: 'User Name*',
                 ),
                 const SizedBox(height: 20),
-                TextField(
+                FieldWidget(
                   controller: _email,
-                  cursorColor: Colors.black,
-                  decoration: InputDecoration(
-                    labelText: 'Email Id*',
-                    errorText: provider.getEmailValidate
-                        ? 'Email Can\'t Be Empty'
-                        : null,
-                    labelStyle: const TextStyle(color: Colors.black),
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: const BorderSide(color: Colors.black),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.black, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
+                  labelText: 'Email Id*',
+                  errorText: provider.getEmailValidate
+                      ? 'Email Can\'t Be Empty'
+                      : null,
                 ),
                 const SizedBox(height: 20),
-                TextField(
+                FieldWidget(
                   controller: _password,
-                  cursorColor: Colors.black,
-                  decoration: InputDecoration(
-                    labelText: 'Password*',
-                    errorText: provider.getPasswordValidate
-                        ? 'Password Can\'t Be Empty'
-                        : null,
-                    labelStyle: const TextStyle(color: Colors.black),
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: const BorderSide(),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.black, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    suffixIcon: provider.getVisible == true
-                        ? IconButton(
-                            icon: const Icon(
-                              Icons.visibility_off,
-                              color: Colors.black,
-                            ),
-                            onPressed: () {
-                              provider.setvisible();
-                            },
-                          )
-                        : IconButton(
-                            icon: const Icon(
-                              Icons.visibility,
-                              color: Colors.black,
-                            ),
-                            onPressed: () {
-                              provider.setInvisible();
-                            },
-                          ),
-                  ),
-                  autofocus: false,
-                  obscureText: provider.getVisible,
+                  labelText: 'Password*',
+                  errorText: provider.getPasswordValidate
+                      ? 'Password Can\'t Be Empty'
+                      : null,
                 ),
                 const SizedBox(height: 20),
                 CupertinoButton(

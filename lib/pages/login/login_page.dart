@@ -33,90 +33,33 @@ class LoginPage extends StatelessWidget {
               padding: const EdgeInsets.all(40),
               child: Column(
                 children: [
-                  // FieldWidget(
-                  //   controller: idText,
-                  //   labelText: 'Email',
-                  // ),
-                  TextField(
+                  FieldWidget(
                     controller: idText,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      labelStyle: const TextStyle(color: Colors.black),
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Colors.black),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.black, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                    ),
+                    labelText: 'Email',
                   ),
                   const SizedBox(height: 20),
-                  // FieldWidget(
-                  //   controller: passwordText,
-                  //   labelText: 'Password',
-                  //   suffixIcon: provider.getVisible == true
-                  //       ? IconButton(
-                  //           icon: const Icon(
-                  //             Icons.visibility_off,
-                  //             color: Colors.black,
-                  //           ),
-                  //           onPressed: () {
-                  //             provider.setvisible();
-                  //           },
-                  //         )
-                  //       : IconButton(
-                  //           icon: const Icon(
-                  //             Icons.visibility,
-                  //             color: Colors.black,
-                  //           ),
-                  //           onPressed: () {
-                  //             provider.setInvisible();
-                  //           },
-                  //         ),
-                  // ),
-                  TextField(
+                  FieldWidget(
                     controller: passwordText,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: const TextStyle(color: Colors.black),
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.black, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      suffixIcon: provider.getVisible == true
-                          ? IconButton(
-                              icon: const Icon(
-                                Icons.visibility_off,
-                                color: Colors.black,
-                              ),
-                              onPressed: () {
-                                provider.setvisible();
-                              },
-                            )
-                          : IconButton(
-                              icon: const Icon(
-                                Icons.visibility,
-                                color: Colors.black,
-                              ),
-                              onPressed: () {
-                                provider.setInvisible();
-                              },
+                    labelText: 'Password',
+                    suffixIcon: provider.getVisible == true
+                        ? IconButton(
+                            icon: const Icon(
+                              Icons.visibility_off,
+                              color: Colors.black,
                             ),
-                    ),
-                    autofocus: false,
-                    obscureText: provider.getVisible,
+                            onPressed: () {
+                              provider.setvisible();
+                            },
+                          )
+                        : IconButton(
+                            icon: const Icon(
+                              Icons.visibility,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              provider.setInvisible();
+                            },
+                          ),
                   ),
                   const SizedBox(height: 20),
                   CupertinoButton(
@@ -132,12 +75,6 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // signUp(
-                      //   context: context,
-                      //   email: 'test',
-                      //   password: 'test',
-                      //   user: 'test',
-                      // );
                       loginHelper.reset();
                       Navigator.push(
                         context,
