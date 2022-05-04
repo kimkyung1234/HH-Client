@@ -47,14 +47,21 @@ Future<Profile> getProfile() async {
 }
 
 Future<Post> getMyPost(String name) async {
-  // final response = await get(Uri.parse(baseUrl + name + '/posts'));
-  // if (response.statusCode == 200) {
-  //   return Post.fromJson(jsonDecode(response.body));
-  // } else {
-  //   throw Exception("Error loading");
-  // }
-  final response = await _loadAddressAsset('assets/my_post.json');
-  return Post.fromJson(jsonDecode(response));
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+  final response = await get(
+    Uri.parse(baseUrl + name + '/user/posts'),
+    headers: {
+      'Authorization': 'Bearer ' + sharedPreferences.getString('accessToken')!
+    },
+  );
+  if (response.statusCode == 200) {
+    return Post.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Error loading');
+  }
+  // final response = await _loadAddressAsset('assets/my_post.json');
+  // return Post.fromJson(jsonDecode(response));
 }
 
 Future<void> postRequest(

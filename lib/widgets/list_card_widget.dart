@@ -8,6 +8,8 @@ class ListCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Pages>(context);
+    var themeMode = Provider.of<ThemeChanger>(context);
+    var theme = themeMode.getThemeData;
 
     return FutureBuilder(
       future: provider.firstLoad(),
@@ -15,7 +17,11 @@ class ListCardWidget extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (provider.getPostList.length == 0) {
-          return const Center(child: Text('No data'));
+          return Center(
+              child: Text(
+            'No data',
+            style: TextStyle(color: theme.accentColor),
+          ));
         }
         return GestureDetector(
           onScaleUpdate: (details) async {

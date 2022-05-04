@@ -15,10 +15,11 @@ class MyPostListWidget extends StatelessWidget {
     var theme = themeMode.getThemeData;
 
     return FutureBuilder<Post>(
-      // future: getMyPost(userName.getUserName ?? ''),
-      future: getMyPost('오어진'),
+      future: getMyPost(userName.getUserName ?? ''),
+      // future: getMyPost('오어진'),
       builder: (_, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        if (snapshot.connectionState == ConnectionState.waiting ||
+            snapshot.data == null) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.data?.posts?.length == 0) {
           return Container(
@@ -29,8 +30,11 @@ class MyPostListWidget extends StatelessWidget {
               ),
               color: theme.canvasColor,
             ),
-            child: const Center(
-              child: Text('No data'),
+            child: Center(
+              child: Text(
+                'No data',
+                style: TextStyle(color: theme.accentColor),
+              ),
             ),
           );
         }
