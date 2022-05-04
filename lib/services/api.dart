@@ -30,7 +30,6 @@ Future<Post> getPost(int index) async {
 
 Future<Profile> getProfile() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  print(sharedPreferences.getString('accessToken'));
 
   final response = await get(
     Uri.parse(baseUrl + '/user/profile'),
